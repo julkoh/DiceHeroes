@@ -6,11 +6,18 @@ public class Player : Character
 {
     private int gold;
     private int diceAmount; //Number of dices
-    private List<Dice> dices;
-    private List<Item> items;
+    private List<Dice> dices = new List<Dice>();
+    private List<Item> items = new List<Item>();
     private int maxDicesOnBoard; //The maximum number of Dices on the board AKA the number of Dice slots on the board AKA the board's size
 
-    
+    public int getGold(){
+        return gold;
+    }
+
+    public void setGold(int val){
+        gold = val;
+    }
+
     public int getDiceAmount(){
         return diceAmount;
     }
@@ -48,10 +55,8 @@ public class Player : Character
     /// </summary>
     void Awake()
     {
-        gold = 0;
-        diceAmount = 6;
-        dices = new List<Dice>();
-        items = new List<Item>();
+        setGold(0);
+        setDiceAmount(6);
         maxDicesOnBoard = 4;
         for (int i = 0; i < diceAmount; i++){
             addDice(new Dice());

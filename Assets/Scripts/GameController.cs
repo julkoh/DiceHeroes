@@ -11,8 +11,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject go = Instantiate(playerGO);
-        player = go.GetComponent<Player>();
+        player = playerGO.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -25,6 +24,6 @@ public class GameController : MonoBehaviour
         return player;
     }
     public GameObject spawnEnemy(){
-        return Instantiate(enemyTypesGO[Random.Range(0,enemyTypesGO.Count-1)]);
+        return (GameObject)Instantiate(enemyTypesGO[Random.Range(0,enemyTypesGO.Count-1)]);
     }
 }
