@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    private Effect effect;
-    private int value;
+    private EffectInfo effect;
+    private int duration;
 }

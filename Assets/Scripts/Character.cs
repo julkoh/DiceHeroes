@@ -4,16 +4,33 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int maxHP;
+    private int maxHP;
     private int currentHP;
     private int armor;
     private List<Buff> buffs; //Buffs and debuffs active on the player
+
+
+    public int getMaxHP(){
+        return maxHP;
+    }
+
+    public void setMaxHP(int val){
+        maxHP = val;
+    }
 
     public int getCurrentHP(){
         return currentHP;
     }
 
-    public void setCurrentHP(int hp){
-        currentHP = hp;
+    public void setCurrentHP(int val){
+        currentHP = val;
+    }
+
+    public int getArmor(){
+        return armor;
+    }
+
+    public void setArmor(int val){
+        armor = val;
     }
 }
