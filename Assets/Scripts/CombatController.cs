@@ -18,7 +18,21 @@ public class CombatController : MonoBehaviour
     private Character activeCharacter;
     public GameObject diceFacePrefab;
 
-    
+    void addDiceFaceToBoard(DiceFace df){
+        Vector3 pos = new Vector3(100*boardDiceFaces.Count+50, 50, 0);
+        GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
+        go.transform.parent = GameObject.Find("Canvas").GetComponent<RectTransform>().transform;
+        //Apply the rolled DiceFace to the GameObject
+        DiceFace dfgo = go.GetComponent<DiceFace>();
+        dfgo.setFaceColor(df.getFaceColor());
+        dfgo.setBasePosition(pos);
+        //Sets the text of the GameObject
+        Text tgo =  go.GetComponent<Text>();
+        tgo.color = dfgo.getColor();
+        tgo.text = dfgo.getFaceColor().ToString();
+        //Add reference to GameObject
+        boardDiceFaces.Add(go);
+    }
 
     /// <summary>
     /// Picks X dices from the dice bag and add them to the board, X being the size of the board
@@ -39,17 +53,7 @@ public class CombatController : MonoBehaviour
             //Roll a random face from the dice
             DiceFace df = d.getFaces()[Random.Range(0,d.getMaxFaces()-1)];
             //Instantiate a new BoardDiceFace GameObject
-            GameObject go = Instantiate(diceFacePrefab, new Vector3(100*boardDiceFaces.Count, 0, 0), Quaternion.identity);
-            go.transform.parent = GameObject.Find("Canvas").GetComponent<RectTransform>().transform;
-            //Apply the rolled DiceFace to the GameObject
-            DiceFace dfgo = go.GetComponent<DiceFace>();
-            dfgo.setFaceColor(df.getFaceColor());
-            //Sets the text of the GameObject
-            Text tgo =  go.GetComponent<Text>();
-            tgo.color = dfgo.getColor();
-            tgo.text = dfgo.getFaceColor().ToString();
-            //Add reference to GameObject
-            boardDiceFaces.Add(go);
+            addDiceFaceToBoard(df);
         }
     }
     
@@ -151,4 +155,25 @@ public class CombatController : MonoBehaviour
         StartTurn();
     }
 
+    public bool combinableDiceFaces(GameObject df1, GameObject df2){
+        DiceFaceColor dfc1 = df1.GetComponent<DiceFace>().getFaceColor();
+        DiceFaceColor dfc2 = df1.GetComponent<DiceFace>().getFaceColor();
+        List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
+        return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
+    }
+
+    public void combineDiceFaces(GameObject df1, GameObject df2){
+        if(combinableDiceFaces(df1,df2)){
+            int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor()-1;
+            int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor()-1;
+            DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
+            boardDiceFaces.Remove(df1);
+            boardDiceFaces.Remove(df2);
+            addDiceFaceToBoard(new DiceFace(dfc));
+            Destroy(df1);
+            Destroy(df2);
+        }else{
+            //Prevent fusion
+        }
+    }
 }

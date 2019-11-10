@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Threading;
-
-public class DiceFace : MonoBehaviour
+using UnityEngine.EventSystems;
+public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private DiceFaceColor faceColor;
     private Color color;
     private EffectInfo effectInfo;
     //private int value; //The number on the face, giving it its value
+    private Vector3 basePosition;
+    private bool reposition = false;
 
     public DiceFace()
     {
         DiceFaceColor dfc = (DiceFaceColor) new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length);
         setFaceColor(dfc);
         Thread.Sleep(20);
+    }
+
+    public DiceFace(DiceFaceColor dfc)
+    {
+        setFaceColor(dfc);
     }
 
     public DiceFaceColor getFaceColor(){
@@ -106,5 +113,36 @@ public class DiceFace : MonoBehaviour
 
     public void applyEffect(Character target){
         effectInfo.applyEffect(target);
+    }
+
+    public Vector3 getBasePosition(){
+        return basePosition;
+    }
+
+    public void setBasePosition(Vector3 pos){
+        basePosition = pos;
+    }
+
+    public void OnDrag(PointerEventData pointerEventData){
+        gameObject.transform.position = Input.mousePosition;
+    }
+
+    public void OnEndDrag(PointerEventData pointerEventData){
+        if(reposition)
+            gameObject.transform.position = basePosition;
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.CompareTag("FusionZone"))
+        {
+            reposition = false;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        if (other.gameObject.CompareTag("FusionZone"))
+        {
+            reposition = true;
+        }
     }
 }
