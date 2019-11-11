@@ -11,11 +11,15 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
     private EffectInfo effectInfo;
     //private int value; //The number on the face, giving it its value
     private Vector3 basePosition;
-    private bool reposition = false;
+    private bool reposition = true;
+    private bool action = true;
+    private int slot;
 
     public DiceFace()
     {
-        DiceFaceColor dfc = (DiceFaceColor) new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length);
+        //DiceFaceColor dfc = (DiceFaceColor) new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length);
+        DiceFaceColor dfc = (DiceFaceColor) new System.Random().Next(4);
+        //Debug.Log("Color : "+dfc.ToString());
         setFaceColor(dfc);
         Thread.Sleep(20);
     }
@@ -33,7 +37,7 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         faceColor = dfc;
         switch(faceColor){
             case DiceFaceColor.NEUTRAL :
-                color = new Color32(255,255,255,255);
+                color = new Color32(127,127,127,255);
                 effectInfo = new EffectInfo();
                 effectInfo.setValue(1);
                 effectInfo.setEffect(new Damage());
@@ -59,37 +63,37 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
             case DiceFaceColor.LAVA :
                 color = new Color32(127,0,0,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
             case DiceFaceColor.ROCK :
                 color = new Color32(64,0,0,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
             case DiceFaceColor.ICE :
                 color = new Color32(0, 105, 176,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
             case DiceFaceColor.PHYSICAL :
                 color = new Color32(255,200,0,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
             case DiceFaceColor.POISON :
                 color = new Color32(127,0,255,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
             case DiceFaceColor.RADIATION :
                 color = new Color32(0,127,0,255);
                 effectInfo = new EffectInfo();
-                effectInfo.setValue(1);
+                effectInfo.setValue(3);
                 effectInfo.setEffect(new Damage());
                 break;
         }
@@ -123,24 +127,39 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         basePosition = pos;
     }
 
+    public bool getAction(){
+        return action;
+    }
+
+    public int getSlot(){
+        return slot;
+    }
+
+    public void setSlot(int s){
+        slot = s;
+    }
+
     public void OnDrag(PointerEventData pointerEventData){
+        action = false;
         gameObject.transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData pointerEventData){
+        action = true;
         if(reposition)
             gameObject.transform.position = basePosition;
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone"))
+        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
         {
             reposition = false;
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone"))
+        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
         {
             reposition = true;
         }

@@ -27,8 +27,6 @@ public class FusionZone : MonoBehaviour
                 if(cb.combinableDiceFaces(diceFacesToFusion[0],diceFacesToFusion[1])){
                     cb.combineDiceFaces(diceFacesToFusion[0],diceFacesToFusion[1]);
                     diceFacesToFusion = new List<GameObject>();
-                }else{
-                    Debug.Log("Faces non combinables");
                 }
             }
         }

@@ -55,6 +55,8 @@ public class Player : Character
     /// </summary>
     void Awake()
     {
+        setMaxHP(20);
+        setCurrentHP(getMaxHP());
         setGold(0);
         setDiceAmount(6);
         maxDicesOnBoard = 4;

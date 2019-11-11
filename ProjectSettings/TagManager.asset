@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DiceFace
   - FusionZone
+  - Enemy
+  - replay
   layers:
   - Default
   - TransparentFX

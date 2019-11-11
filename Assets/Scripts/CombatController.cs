@@ -1,37 +1,64 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System; 
+using System.Collections.Generic; 
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CombatController : MonoBehaviour
 {
     public GameController gc;
-    private Player player;
+    private GameObject player;
     private List<Dice> diceBag; //Dices left in the dice bag of the player
-    private List<Dice> boardDices = new List<Dice>(); //Dices on the player's board
-    private List<GameObject> boardDiceFaces = new List<GameObject>(); //Dice faces on the player's board
-    private List<Dice> usedDices = new List<Dice>();
+    private Dice[] boardDices; //Dices on the player's board
+    private GameObject[] boardDiceFaces; //Dice faces on the player's board
+    private List<Dice> usedDices;
     //private List<DiceFace> usedDiceFaces = new List<DiceFace>();
     private int enemyAmount;
-    private List<GameObject> enemies = new List<GameObject>();
+    private List<GameObject> enemies;
     private int activeCharacterID; //Active character number : -1 for the player, >0 for enemies (index in the "enemies" list)
-    private Character activeCharacter;
+    private GameObject activeCharacter;
     public GameObject diceFacePrefab;
 
+    public GameObject replayButton;
+
+    public GameObject getPlayer(){
+        return player;
+    }
+
+    int searchEmptySlot(){
+        int i = 0;
+        while(boardDiceFaces[i] != null){
+            i++;
+        }
+        return i;
+    }
+
+    bool isBoardEmpty(){
+        int i = 0;
+        while(i < boardDiceFaces.Length){
+            if(boardDiceFaces[i] != null){
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
     void addDiceFaceToBoard(DiceFace df){
-        Vector3 pos = new Vector3(100*boardDiceFaces.Count+50, 50, 0);
+        int slot = searchEmptySlot();
+        Vector3 pos = new Vector3(100*slot+50, 50, 0);
         GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
-        go.transform.parent = GameObject.Find("Canvas").GetComponent<RectTransform>().transform;
+        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
         //Apply the rolled DiceFace to the GameObject
         DiceFace dfgo = go.GetComponent<DiceFace>();
         dfgo.setFaceColor(df.getFaceColor());
         dfgo.setBasePosition(pos);
+        dfgo.setSlot(slot);
         //Sets the text of the GameObject
         Text tgo =  go.GetComponent<Text>();
         tgo.color = dfgo.getColor();
         tgo.text = dfgo.getFaceColor().ToString();
         //Add reference to GameObject
-        boardDiceFaces.Add(go);
+        boardDiceFaces[slot] = go;
     }
 
     /// <summary>
@@ -39,8 +66,8 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void drawDices(){
         int i = 0;
-        while(i < player.getMaxDicesOnBoard() && diceBag.Count > 0){
-            boardDices.Add(diceBag[Random.Range(0,diceBag.Count-1)]);
+        while(i < player.GetComponent<Player>().getMaxDicesOnBoard() && diceBag.Count > 0){
+            boardDices[i] = diceBag[UnityEngine.Random.Range(0,diceBag.Count-1)];
             i++;
         }
     }
@@ -51,7 +78,7 @@ public class CombatController : MonoBehaviour
     void rollDices(){
         foreach(Dice d in boardDices){
             //Roll a random face from the dice
-            DiceFace df = d.getFaces()[Random.Range(0,d.getMaxFaces()-1)];
+            DiceFace df = d.getFaces()[UnityEngine.Random.Range(0,d.getMaxFaces()-1)];
             //Instantiate a new BoardDiceFace GameObject
             addDiceFaceToBoard(df);
         }
@@ -64,6 +91,10 @@ public class CombatController : MonoBehaviour
         if(activeCharacter == player){
             drawDices();
             rollDices();
+        }else{
+            activeCharacter.GetComponent<Enemy>().chooseAbilityAndTarget();
+            activeCharacter.GetComponent<Enemy>().useAbility();
+            EndTurn();
         }
     }
 
@@ -72,14 +103,23 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void Start(){
         player = gc.getPlayer();
-        diceBag = player.getDices();
-        enemyAmount = Random.Range(1,2);
+        player.GetComponent<Player>().refreshHealthDisplay();
+        boardDices = new Dice[player.GetComponent<Player>().getMaxDicesOnBoard()];
+        boardDiceFaces = new GameObject[player.GetComponent<Player>().getMaxDicesOnBoard()];
+        diceBag = player.GetComponent<Player>().getDices();
+        usedDices = new List<Dice>();
+        enemyAmount = UnityEngine.Random.Range(1,2);
+        enemies  = new List<GameObject>();
         for(int i = 0; i < enemyAmount; i++){
-            GameObject go = gc.spawnEnemy();
+            GameObject enemyPrefab = gc.getEnemyTypesGO()[UnityEngine.Random.Range(0,gc.getEnemyTypesGO().Count-1)];
+            GameObject go = Instantiate(enemyPrefab, new Vector3(-50 * enemies.Count, 0, 0), Quaternion.identity);
+            go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+            go.GetComponent<Enemy>().setCombatController(this);
+            go.GetComponent<Enemy>().refreshHealthDisplay();
             enemies.Add(go);
         }
         activeCharacterID = -1;
-        activeCharacter = player;
+        activeCharacter = player.gameObject;
         StartTurn();
     }
 
@@ -91,7 +131,7 @@ public class CombatController : MonoBehaviour
         //Move dice from board to used
         Dice d = boardDices[boardSlotID];
         usedDices.Add(d);
-        boardDices.Remove(d);
+        boardDices[boardSlotID] = null;
     }
 
     /// <summary>
@@ -102,7 +142,7 @@ public class CombatController : MonoBehaviour
         //Move dice face from board to used
         GameObject go = boardDiceFaces[boardSlotID];
         //usedDiceFaces.Add(boardDiceFaces[boardSlotID]);
-        boardDiceFaces.Remove(go);
+        boardDiceFaces[boardSlotID] = null;
         Destroy(go);
     }
 
@@ -118,31 +158,49 @@ public class CombatController : MonoBehaviour
     /// <summary>
     /// Apply a dice face's effect on the target, then discard the dice
     /// </summary>
-    void useDice(int boardSlotID, Character target){
-        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffect(target);
+    public void useDice(int boardSlotID, GameObject target){
+        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffect(target.GetComponent<Character>());
         discardDiceAndFace(boardSlotID);
+        if(target.GetComponent<Character>().getCurrentHP() <= 0){
+            killEnemy(target);
+        }else{
+            target.GetComponent<Character>().refreshHealthDisplay();
+        }
+        if(enemies.Count == 0){
+            EndCombat();
+        }else if(isBoardEmpty()){
+            EndTurn();
+        }
     }
 
     /// <summary>
     /// Ends the current character's turn
     /// </summary>
     void EndTurn(){
-        if(activeCharacter == player){ //At the end of the player's turn, discard all remaining dices on the board
-            for(int i = 0; i < boardDices.Count; i++){
-                discardDiceAndFace(i);
+        if(activeCharacter == player){
+            //At the end of the player's turn, discard all remaining dices on the board
+            resetBoard();
+            //Trigger "end of turn" event, calling onTurnFinished
+            onTurnFinished();
+        }else{
+            if(player.GetComponent<Player>().getCurrentHP() <= 0){
+                EndCombat();
+            }else{
+                onTurnFinished();
             }
         }
-        //Trigger "end of turn" event, calling onTurnFinished
+        
     }
 
     void onTurnFinished(){
         //Select next character
         if(activeCharacterID<enemies.Count-1){
             activeCharacterID++;
-            activeCharacter = enemies[activeCharacterID].GetComponent<Enemy>();
+            activeCharacter = enemies[activeCharacterID];
             StartTurn();
         }else{
             //Trigger "end of global turn" event, calling onGlobalTurnFinished
+            onGlobalTurnFinished();
         }
     }
 
@@ -151,7 +209,7 @@ public class CombatController : MonoBehaviour
 
         //Then start a new global turn
         activeCharacterID = -1;
-        activeCharacter = player;
+        activeCharacter = player.gameObject;
         StartTurn();
     }
 
@@ -167,13 +225,66 @@ public class CombatController : MonoBehaviour
             int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor()-1;
             int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor()-1;
             DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
-            boardDiceFaces.Remove(df1);
-            boardDiceFaces.Remove(df2);
+            boardDiceFaces[Array.IndexOf(boardDiceFaces, df1)] = null;
+            boardDiceFaces[Array.IndexOf(boardDiceFaces, df2)] = null;
             addDiceFaceToBoard(new DiceFace(dfc));
             Destroy(df1);
             Destroy(df2);
         }else{
             //Prevent fusion
+        }
+    }
+
+    /// <summary>
+    /// Remove an enemy from the combat
+    /// </summary>
+    void killEnemy(GameObject enemy){
+        enemies.Remove(enemy);
+        Destroy(enemy);
+    }
+
+    /// <summary>
+    /// Ends the combat
+    /// </summary>
+    void EndCombat(){
+        for(int i = 0; i < boardDiceFaces.Length; i++){
+            if(boardDiceFaces[i])
+                boardDiceFaces[i].SetActive(false);
+        }
+        GameObject vt = GameObject.Find("VictoryText");
+        if(player.GetComponent<Player>().getCurrentHP() <= 0){
+            vt.GetComponent<Text>().text = "Enemies won !";
+        }
+        if(enemies.Count == 0){
+            vt.GetComponent<Text>().text = "Player won !";
+        }
+        replayButton.SetActive(true);
+    }
+
+    public void restartCombat(){
+        resetBoard();
+        resetEnemies();
+        replayButton.SetActive(false);
+        GameObject.Find("VictoryText").GetComponent<Text>().text = "";
+        Player p =player.GetComponent<Player>();
+        p.setCurrentHP(p.getMaxHP());
+        Start();
+    }
+
+    void resetBoard(){
+        if(!isBoardEmpty()){ 
+            for(int i = 0; i < boardDices.Length; i++){
+                discardDiceAndFace(i);
+            }
+        }
+    }
+
+    void resetEnemies(){
+        if(enemies.Count > 0){ 
+            foreach(GameObject go in enemies){
+                Destroy(go);
+            }
+            enemies.Clear();
         }
     }
 }

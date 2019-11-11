@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -32,5 +33,9 @@ public class Character : MonoBehaviour
 
     public void setArmor(int val){
         armor = val;
+    }
+
+    public void refreshHealthDisplay(){
+        gameObject.GetComponent<Text>().text = getCurrentHP()+"/"+getMaxHP();
     }
 }
