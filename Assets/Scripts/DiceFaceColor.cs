@@ -1,5 +1,5 @@
 ﻿public enum DiceFaceColor {
-    NEUTRAL, WATER, EARTH, FIRE, LAVA, ROCK, ICE, PHYSICAL, POISON, RADIATION
+     WATER, EARTH, FIRE, NEUTRAL, LAVA, ROCK, ICE, PHYSICAL, POISON, RADIATION
 }
 
 public class DiceFaceColorCombine {

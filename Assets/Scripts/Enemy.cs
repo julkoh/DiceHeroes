@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
@@ -33,9 +34,7 @@ public class Enemy : Character
         setMaxHP(Random.Range(10,20));
         setCurrentHP(getMaxHP());
         setArmor(0);
-        EffectInfo ability = new EffectInfo();
-        ability.setValue(Random.Range(1,10));
-        ability.setEffect(new Damage());
+        EffectInfo ability = new EffectInfo(new Damage(), Random.Range(1,10), "");
         addAbility(ability);
     }
 
@@ -45,14 +44,15 @@ public class Enemy : Character
     public void chooseAbilityAndTarget(){
         chosenAbility = abilities[Random.Range(0,abilities.Count-1)];
         chosenTarget = combatController.getPlayer().GetComponent<Player>();
+        gameObject.transform.Find("Intent").Find("Value").gameObject.GetComponent<Text>().text = ""+chosenAbility.getValue();
     }
 
     /// <summary>
     /// Apply the chosen ability effect on the chosen target
     /// </summary>
     public void useAbility(){
-        chosenAbility.applyEffect(chosenTarget);
-        chosenTarget.refreshHealthDisplay();
+        chosenAbility.applyEffect(this, chosenTarget);
+        chosenTarget.refreshHUD();
     }
 
     void OnTriggerEnter2D(Collider2D other){

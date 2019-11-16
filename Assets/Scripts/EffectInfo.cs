@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectInfo : MonoBehaviour
+public class EffectInfo
 {
     private Effect effect;
     private int value;
     private string description;
+
+    public EffectInfo(Effect e, int val, string desc){
+        setEffect(e);
+        setValue(val);
+        setDescription(desc);
+    }
 
     public Effect getEffect(){
         return effect;
@@ -32,7 +38,7 @@ public class EffectInfo : MonoBehaviour
         description = desc;
     }
 
-    public void applyEffect(Character target){
-        effect.apply(target, value);
+    public void applyEffect(Character source, Character target){
+        effect.apply(source, target, value);
     }
 }

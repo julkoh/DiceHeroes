@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Threading;
 
-public class Dice : MonoBehaviour
+public class Dice
 {
     private int maxFaces;
     private List<DiceFace> faces;
@@ -13,7 +15,8 @@ public class Dice : MonoBehaviour
         maxFaces = 4;
         faces = new List<DiceFace>();
         for(int i = 0; i < maxFaces; i++){
-            addFace(new DiceFace());
+            addFace(new DiceFace((DiceFaceColor)new System.Random().Next(4)));
+            Thread.Sleep(20);
         }
     }
 

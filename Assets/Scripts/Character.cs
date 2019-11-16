@@ -35,7 +35,15 @@ public class Character : MonoBehaviour
         armor = val;
     }
 
-    public void refreshHealthDisplay(){
-        gameObject.GetComponent<Text>().text = getCurrentHP()+"/"+getMaxHP();
+    public void refreshHUD(){
+        //HP BAR
+        Transform health = gameObject.transform.Find("HealthBar");
+        GameObject HPBar = health.Find("Bar").gameObject;
+        GameObject HPText = health.Find("Text").gameObject;
+        HPBar.transform.localScale = new Vector3((float)getCurrentHP()/getMaxHP(),1f);
+        HPText.GetComponent<Text>().text = getCurrentHP()+" / "+getMaxHP();
+        //ARMOR
+        GameObject armor = gameObject.transform.Find("Armor").Find("Count").gameObject;
+        armor.GetComponent<Text>().text = ""+getArmor();
     }
 }

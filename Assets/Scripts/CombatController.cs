@@ -17,8 +17,8 @@ public class CombatController : MonoBehaviour
     private int activeCharacterID; //Active character number : -1 for the player, >0 for enemies (index in the "enemies" list)
     private GameObject activeCharacter;
     public GameObject diceFacePrefab;
-
     public GameObject replayButton;
+    //[SerializeField] GameObject sprite;
 
     public GameObject getPlayer(){
         return player;
@@ -89,10 +89,12 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void StartTurn(){
         if(activeCharacter == player){
+            foreach(GameObject enemy in enemies){
+                enemy.GetComponent<Enemy>().chooseAbilityAndTarget();
+            }
             drawDices();
             rollDices();
         }else{
-            activeCharacter.GetComponent<Enemy>().chooseAbilityAndTarget();
             activeCharacter.GetComponent<Enemy>().useAbility();
             EndTurn();
         }
@@ -103,7 +105,8 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void Start(){
         player = gc.getPlayer();
-        player.GetComponent<Player>().refreshHealthDisplay();
+        player.GetComponent<Player>().refreshHUD();
+        //Instantiate(sprite, player.transform.position, Quaternion.identity);
         boardDices = new Dice[player.GetComponent<Player>().getMaxDicesOnBoard()];
         boardDiceFaces = new GameObject[player.GetComponent<Player>().getMaxDicesOnBoard()];
         diceBag = player.GetComponent<Player>().getDices();
@@ -113,9 +116,10 @@ public class CombatController : MonoBehaviour
         for(int i = 0; i < enemyAmount; i++){
             GameObject enemyPrefab = gc.getEnemyTypesGO()[UnityEngine.Random.Range(0,gc.getEnemyTypesGO().Count-1)];
             GameObject go = Instantiate(enemyPrefab, new Vector3(-50 * enemies.Count, 0, 0), Quaternion.identity);
+            //Instantiate(sprite, go.transform.localPosition, Quaternion.identity);
             go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
             go.GetComponent<Enemy>().setCombatController(this);
-            go.GetComponent<Enemy>().refreshHealthDisplay();
+            go.GetComponent<Enemy>().refreshHUD();
             enemies.Add(go);
         }
         activeCharacterID = -1;
@@ -159,13 +163,14 @@ public class CombatController : MonoBehaviour
     /// Apply a dice face's effect on the target, then discard the dice
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
-        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffect(target.GetComponent<Character>());
+        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Character>());
         discardDiceAndFace(boardSlotID);
         if(target.GetComponent<Character>().getCurrentHP() <= 0){
             killEnemy(target);
         }else{
-            target.GetComponent<Character>().refreshHealthDisplay();
+            target.GetComponent<Character>().refreshHUD();
         }
+        player.GetComponent<Player>().refreshHUD();
         if(enemies.Count == 0){
             EndCombat();
         }else if(isBoardEmpty()){
@@ -222,14 +227,12 @@ public class CombatController : MonoBehaviour
 
     public void combineDiceFaces(GameObject df1, GameObject df2){
         if(combinableDiceFaces(df1,df2)){
-            int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor()-1;
-            int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor()-1;
+            int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor();
+            int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor();
             DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
-            boardDiceFaces[Array.IndexOf(boardDiceFaces, df1)] = null;
-            boardDiceFaces[Array.IndexOf(boardDiceFaces, df2)] = null;
+            discardDiceAndFace(Array.IndexOf(boardDiceFaces, df1));
+            discardDiceAndFace(Array.IndexOf(boardDiceFaces, df2));
             addDiceFaceToBoard(new DiceFace(dfc));
-            Destroy(df1);
-            Destroy(df2);
         }else{
             //Prevent fusion
         }
@@ -266,8 +269,9 @@ public class CombatController : MonoBehaviour
         resetEnemies();
         replayButton.SetActive(false);
         GameObject.Find("VictoryText").GetComponent<Text>().text = "";
-        Player p =player.GetComponent<Player>();
+        Player p = player.GetComponent<Player>();
         p.setCurrentHP(p.getMaxHP());
+        p.setArmor(0);
         Start();
     }
 
