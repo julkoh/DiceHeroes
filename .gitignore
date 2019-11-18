@@ -9,7 +9,7 @@
 # [Aa]ssets/AssetStoreTools*
 
 # Github plugin package
-[Aa]ssets/Plugins/GitHub/
+Assets/Plugins/GitHub/
 
 # Visual Studio cache directory
 .vs/
