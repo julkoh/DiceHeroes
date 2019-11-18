@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private string itemName;
-    private EffectInfo effectInfo;
+    private Effect effect;
 
     public string getItemName(){
         return itemName;
@@ -15,11 +15,11 @@ public class Item : MonoBehaviour
         itemName = name;
     }
 
-    public EffectInfo getEffect(){
-        return effectInfo;
+    public Effect getEffect(){
+        return effect;
     }
 
-    public void setEffect(EffectInfo ei){
-        effectInfo = ei;
+    public void setEffect(Effect e){
+        effect = e;
     }
 }

@@ -10,6 +10,7 @@
 
 # Github plugin package
 Assets/Plugins/GitHub/
+Assets/Plugins/GitHub.meta
 
 # Visual Studio cache directory
 .vs/

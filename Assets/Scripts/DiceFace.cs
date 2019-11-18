@@ -6,11 +6,11 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private DiceFaceColor faceColor;
     private Color color;
-    private List<EffectInfo> effectsInfo = new List<EffectInfo>();
+    private List<Effect> effects = new List<Effect>();
     //private int value; //The number on the face, giving it its value
     private Vector3 basePosition;
-    private bool reposition = true;
-    private bool action = true;
+    private bool reposition;
+    private bool action;
     private int slot;
 
     public DiceFace(DiceFaceColor dfc)
@@ -19,7 +19,9 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
     }
 
     void Awake(){
-        effectsInfo = new List<EffectInfo>();
+        reposition = true;
+        action = true;
+        effects = new List<Effect>();
     }
 
     public DiceFaceColor getFaceColor(){
@@ -31,44 +33,45 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         switch(faceColor){
             case DiceFaceColor.WATER :
                 color = new Color32(88, 189, 255,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 1, ""));
+                Addeffect(new Damage(1, ""));
+                Addeffect(new Heal(1, ""));
                 break;
             case DiceFaceColor.EARTH :
                 color = new Color32(127,64,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 1, ""));
-                AddEffectInfo(new EffectInfo(new Shield(), 1, ""));
+                Addeffect(new Damage(1, ""));
+                Addeffect(new Shield(1, ""));
                 break;
             case DiceFaceColor.FIRE :
                 color = new Color32(255,0,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 1, ""));
+                Addeffect(new AddBuff(new Fire(), 1, ""));
                 break;
             case DiceFaceColor.NEUTRAL :
                 color = new Color32(127,127,127,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 1, ""));
+                Addeffect(new Damage(1, ""));
                 break;
             case DiceFaceColor.LAVA :
                 color = new Color32(127,0,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new Lava(2, ""));
                 break;
             case DiceFaceColor.ROCK :
                 color = new Color32(64,0,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new ShieldDamage(2, ""));
                 break;
             case DiceFaceColor.ICE :
                 color = new Color32(0, 105, 176,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new AddBuff(new Ice(), 1, ""));
                 break;
             case DiceFaceColor.PHYSICAL :
                 color = new Color32(255,200,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new TrueDamage(2, ""));
                 break;
             case DiceFaceColor.POISON :
                 color = new Color32(127,0,255,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new AddBuff(new Poison(), 3, ""));
                 break;
             case DiceFaceColor.RADIATION :
                 color = new Color32(0,127,0,255);
-                AddEffectInfo(new EffectInfo(new Damage(), 3, ""));
+                Addeffect(new Confuse(0, ""));
                 break;
         }
     }
@@ -81,17 +84,17 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         color = c;
     }
 
-    public List<EffectInfo> getEffectInfo(){
-        return effectsInfo;
+    public List<Effect> geteffect(){
+        return effects;
     }
 
-    public void AddEffectInfo(EffectInfo ei){
-        effectsInfo.Add(ei);
+    public void Addeffect(Effect e){
+        effects.Add(e);
     }
 
     public void applyEffects(Character source, Character target){
-        foreach(EffectInfo ei in effectsInfo){
-            ei.applyEffect(source, target);
+        foreach(Effect e in effects){
+            e.apply(source, target);
         }
     }
 
