@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapController : MonoBehaviour
 {
-    ArrayList tiles=new ArrayList();
+    List<Tile> tiles=new List<Tile>();
     [SerializeField] private Transform Character;
     public GameObject prefabTile;
-    int charj = 1;
 
+    public int charj = 1;
+
+    public void OnClick(){
+        Debug.Log("Click");
+    }
     void OnGUI()
     {
         //GUI.Box(new Rect(250, 500, 100, 100), "N2");
@@ -54,7 +59,10 @@ public class MapController : MonoBehaviour
     {
         
     }
-
+    public void updatecharj(int a)
+    {
+        charj+=a;
+    }
 
 
 }
