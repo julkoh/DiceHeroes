@@ -10,26 +10,23 @@ public class Tile : MonoBehaviour
 {
     public GameObject tile;
     int layer;
-    ArrayList lines=new ArrayList();
+    public List<LineRenderer> lines=new List<LineRenderer>();
     GameObject mapcontroller;
-    public Button button; 
+    public Button button;
+    public Vector3 position;
+
     public Tile(){
     }
     public void Create(int x, int y,int layer, GameObject prefabTile)
     {
         this.layer=layer;
-        tile = Instantiate(prefabTile, new Vector3(x,y),Quaternion.identity);
+        position=new Vector3(x,y);
+        tile = Instantiate(prefabTile, position,Quaternion.identity);
         tile.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform,false);
         mapcontroller = GameObject.Find("MapHandler");
-        if (mapcontroller == null)Debug.Log("MAP NULL");
         button = tile.transform.Find("Image").gameObject.GetComponent<Button>();
-        if (button == null)Debug.Log("BUTTON NULL");
-       // button.onClick.AddListener(mapcontroller.GetComponent<MapController>().OnClick);
-       UnityAction methodDelegate = System.Delegate.CreateDelegate(typeof(UnityAction), mapcontroller.GetComponent<MapController>(), UnityEvent.GetValidMethodInfo(mapcontroller.GetComponent<MapController>() ,nameof(OnClick) ,new System.Type[0])) as UnityAction;
-       UnityEventTools.AddPersistentListener(button.onClick,methodDelegate);
-    }
-    public void OnClick(){
-        Debug.Log("ma bite est un volcan");
+        button.onClick.AddListener(()=>{mapcontroller.GetComponent<MapController>().OnClick(x,y);});
+        //Debug.Log(x);
     }
     public void Links(Tile t){
         GameObject line = new GameObject();
