@@ -183,14 +183,12 @@ public class CombatController : MonoBehaviour
         GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
         go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
         //Apply the rolled DiceFace to the GameObject
-        DiceFace dfgo = go.GetComponent<DiceFace>();
-        dfgo.setFaceColor(df.getFaceColor());
+        BoardDiceFace dfgo = go.GetComponent<BoardDiceFace>();
+        dfgo.setDiceFace(df);
         dfgo.setBasePosition(dfgo.gameObject.transform.position);
         dfgo.setSlot(slot);
         //Sets the text of the GameObject
-        string faceColorName = dfgo.getFaceColor().ToString();
-        //go.GetComponentInChildren<Text>().text = faceColorName;
-        //go.GetComponentInChildren<Image>().color = dfgo.getColor();
+        string faceColorName = dfgo.getDiceFace().getFaceColor().ToString();
         go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+faceColorName.ToLower()+".png");
         //Add reference to GameObject
         boardDiceFaces[slot] = go;
@@ -248,7 +246,6 @@ public class CombatController : MonoBehaviour
     void discardDiceFace(int boardSlotID){
         //Move dice face from board to used
         GameObject go = boardDiceFaces[boardSlotID];
-        //usedDiceFaces.Add(boardDiceFaces[boardSlotID]);
         boardDiceFaces[boardSlotID] = null;
         Destroy(go);
     }
@@ -284,7 +281,7 @@ public class CombatController : MonoBehaviour
     /// Apply a dice face's effect on the target, then discard the dice
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
-        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
+        boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
         discardDiceAndFace(boardSlotID);
         if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
             killEnemy(target);
@@ -302,16 +299,16 @@ public class CombatController : MonoBehaviour
     // ========================= Dice fusion =========================
 
     public bool combinableDiceFaces(GameObject df1, GameObject df2){
-        DiceFaceColor dfc1 = df1.GetComponent<DiceFace>().getFaceColor();
-        DiceFaceColor dfc2 = df1.GetComponent<DiceFace>().getFaceColor();
+        DiceFaceColor dfc1 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+        DiceFaceColor dfc2 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
         List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
         return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
     }
 
     public void combineDiceFaces(GameObject df1, GameObject df2){
         if(combinableDiceFaces(df1,df2)){
-            int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor();
-            int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor();
+            int dfc1 = (int) df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+            int dfc2 = (int) df2.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
             DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
             discardDiceAndFace(Array.IndexOf(boardDiceFaces, df1));
             discardDiceAndFace(Array.IndexOf(boardDiceFaces, df2));

@@ -64,9 +64,9 @@ public class Enemy : Character
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("DiceFace") && other.gameObject.GetComponent<DiceFace>().getAction())
+        if (other.gameObject.CompareTag("DiceFace") && other.gameObject.GetComponent<BoardDiceFace>().getAction())
         {
-            combatController.useDice(other.gameObject.GetComponent<DiceFace>().getSlot(), gameObject);
+            combatController.useDice(other.gameObject.GetComponent<BoardDiceFace>().getSlot(), gameObject);
         }
     }
 

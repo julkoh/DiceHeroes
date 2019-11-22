@@ -19,7 +19,7 @@ public class FusionZone : MonoBehaviour
     void OnTriggerStay2D(Collider2D other){
         if (active && other.gameObject.CompareTag("DiceFace")){
             GameObject df = other.gameObject;
-            if(df.GetComponent<DiceFace>().getAction()){
+            if(df.GetComponent<BoardDiceFace>().getAction()){
                 active = false;
                     if(df.transform.position != gameObject.transform.position){
                     cb.AddDiceFaceToFusion(df);

@@ -82,9 +82,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1026219525524829433}
-  - component: {fileID: 8171366380161257861}
   - component: {fileID: 3920503164370015949}
   - component: {fileID: 8000369611399757537}
+  - component: {fileID: 324083013013466373}
   m_Layer: 0
   m_Name: BoardDiceFace
   m_TagString: DiceFace
@@ -112,18 +112,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8171366380161257861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802791841851437533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5139af7097e84804fb51ea0f042b44ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &3920503164370015949
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -158,3 +146,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
+--- !u!114 &324083013013466373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802791841851437533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b30a60a3314ed4da15e899eb39a1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
