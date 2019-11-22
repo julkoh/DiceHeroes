@@ -12,12 +12,11 @@ public class Dice
     
     public Dice()
     {
-        maxFaces = 4;
+        setMaxFaces(4);
         faces = new List<DiceFace>();
         for(int i = 0; i < maxFaces; i++){
             addFace(new DiceFace((DiceFaceColor)new System.Random().Next(3)));
             Thread.Sleep(20);
-            //addFace(new DiceFace(DiceFaceColor.EARTH));
         }
     }
 

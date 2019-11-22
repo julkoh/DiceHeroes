@@ -7,7 +7,6 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
     private DiceFaceColor faceColor;
     private Color color;
     private List<Effect> effects = new List<Effect>();
-    //private int value; //The number on the face, giving it its value
     private Vector3 basePosition;
     private bool reposition;
     private bool action;
@@ -120,7 +119,9 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData pointerEventData){
         action = false;
-        gameObject.transform.position = Input.mousePosition;
+        Vector3 pos = Input.mousePosition;
+        pos.z = 100.0f;
+        gameObject.transform.position = Camera.main.ScreenToWorldPoint(pos);
     }
 
     public void OnEndDrag(PointerEventData pointerEventData){
@@ -129,10 +130,14 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
             gameObject.transform.position = basePosition;
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerStay2D(Collider2D other){
         if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
         {
-            reposition = false;
+            if(other.gameObject.CompareTag("FusionZone") && !other.gameObject.GetComponent<FusionZone>().getActive()){
+                reposition = true;
+            }else{
+                reposition = false;
+            }
         }
         
     }
