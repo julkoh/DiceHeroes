@@ -30,6 +30,10 @@ public class Player : Character
         return dices;
     }
 
+    public void setDices(List<Dice> ds){
+        dices = ds;
+    }
+
     public void addDice(Dice d){
         dices.Add(d);
     }
@@ -59,9 +63,9 @@ public class Player : Character
         setCurrentHP(getMaxHP());
         setGold(0);
         setDiceAmount(6);
-        maxDicesOnBoard = 4;
+        setMaxDicesOnBoard(4);
         for (int i = 0; i < diceAmount; i++){
-            addDice(new Dice());
+            addDice(new Dice(4));
         }
     }
 }

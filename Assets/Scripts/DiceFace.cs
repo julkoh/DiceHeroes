@@ -2,26 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
+public class DiceFace
 {
     private DiceFaceColor faceColor;
-    private Color color;
     private List<Effect> effects = new List<Effect>();
-    //private int value; //The number on the face, giving it its value
-    private Vector3 basePosition;
-    private bool reposition;
-    private bool action;
-    private int slot;
+
+    public DiceFace()
+    {
+        setFaceColor((DiceFaceColor)new System.Random().Next(4));
+    }
 
     public DiceFace(DiceFaceColor dfc)
     {
         setFaceColor(dfc);
-    }
-
-    void Awake(){
-        reposition = true;
-        action = true;
-        effects = new List<Effect>();
     }
 
     public DiceFaceColor getFaceColor(){
@@ -32,115 +25,51 @@ public class DiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         faceColor = dfc;
         switch(faceColor){
             case DiceFaceColor.WATER :
-                color = new Color32(88, 189, 255,255);
-                Addeffect(new Damage(1, ""));
-                Addeffect(new Heal(1, ""));
+                AddEffect(new Damage(1, ""));
+                AddEffect(new Heal(1, ""));
                 break;
             case DiceFaceColor.EARTH :
-                color = new Color32(127,64,0,255);
-                Addeffect(new Damage(1, ""));
-                Addeffect(new Shield(1, ""));
+                AddEffect(new Damage(1, ""));
+                AddEffect(new Shield(1, ""));
                 break;
             case DiceFaceColor.FIRE :
-                color = new Color32(255,0,0,255);
-                Addeffect(new AddBuff(new Fire(), 1, ""));
+                AddEffect(new AddBuff(new Fire(), 1, ""));
                 break;
             case DiceFaceColor.NEUTRAL :
-                color = new Color32(127,127,127,255);
-                Addeffect(new Damage(1, ""));
+                AddEffect(new Damage(1, ""));
                 break;
             case DiceFaceColor.LAVA :
-                color = new Color32(127,0,0,255);
-                Addeffect(new Lava(2, ""));
+                AddEffect(new Lava(2, ""));
                 break;
             case DiceFaceColor.ROCK :
-                color = new Color32(64,0,0,255);
-                Addeffect(new ShieldDamage(2, ""));
+                AddEffect(new ShieldDamage(2, ""));
                 break;
             case DiceFaceColor.ICE :
-                color = new Color32(0, 105, 176,255);
-                Addeffect(new AddBuff(new Ice(), 1, ""));
+                AddEffect(new AddBuff(new Ice(), 1, ""));
                 break;
             case DiceFaceColor.PHYSICAL :
-                color = new Color32(255,200,0,255);
-                Addeffect(new TrueDamage(2, ""));
+                AddEffect(new TrueDamage(2, ""));
                 break;
             case DiceFaceColor.POISON :
-                color = new Color32(127,0,255,255);
-                Addeffect(new AddBuff(new Poison(), 3, ""));
+                AddEffect(new AddBuff(new Poison(), 3, ""));
                 break;
             case DiceFaceColor.RADIATION :
-                color = new Color32(0,127,0,255);
-                Addeffect(new Confuse(0, ""));
+                AddEffect(new Confuse(0, ""));
                 break;
         }
     }
     
-    public Color getColor(){
-        return color;
-    }
-
-    public void setColor(Color c){
-        color = c;
-    }
-
-    public List<Effect> geteffect(){
+    public List<Effect> getEffect(){
         return effects;
     }
 
-    public void Addeffect(Effect e){
+    public void AddEffect(Effect e){
         effects.Add(e);
     }
 
     public void applyEffects(Character source, Character target){
         foreach(Effect e in effects){
             e.apply(source, target);
-        }
-    }
-
-    public Vector3 getBasePosition(){
-        return basePosition;
-    }
-
-    public void setBasePosition(Vector3 pos){
-        basePosition = pos;
-    }
-
-    public bool getAction(){
-        return action;
-    }
-
-    public int getSlot(){
-        return slot;
-    }
-
-    public void setSlot(int s){
-        slot = s;
-    }
-
-    public void OnDrag(PointerEventData pointerEventData){
-        action = false;
-        gameObject.transform.position = Input.mousePosition;
-    }
-
-    public void OnEndDrag(PointerEventData pointerEventData){
-        action = true;
-        if(reposition)
-            gameObject.transform.position = basePosition;
-    }
-
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
-        {
-            reposition = false;
-        }
-        
-    }
-
-    void OnTriggerExit2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
-        {
-            reposition = true;
         }
     }
 }

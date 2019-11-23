@@ -5,28 +5,25 @@ using UnityEngine;
 public class FusionZone : MonoBehaviour
 {
     public CombatController cb;
-    private List<GameObject> diceFacesToFusion = new List<GameObject>();
+    private bool active;
 
-    public List<GameObject> getDicesFacesToFusion(){
-        return diceFacesToFusion;
+    void Awake()
+    {
+        active = true;
     }
 
-    public void AddDiceFaceToFusion(GameObject df){
-        diceFacesToFusion.Add(df);
+    public bool getActive(){
+        return active;
     }
 
-    public void RemoveDiceFaceToFusion(GameObject df){
-        diceFacesToFusion.Remove(df);
-    }
-
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("DiceFace"))
-        {
-            AddDiceFaceToFusion(other.gameObject);
-            if(diceFacesToFusion.Count == 2){
-                if(cb.combinableDiceFaces(diceFacesToFusion[0],diceFacesToFusion[1])){
-                    cb.combineDiceFaces(diceFacesToFusion[0],diceFacesToFusion[1]);
-                    diceFacesToFusion = new List<GameObject>();
+    void OnTriggerStay2D(Collider2D other){
+        if (active && other.gameObject.CompareTag("DiceFace")){
+            GameObject df = other.gameObject;
+            if(df.GetComponent<BoardDiceFace>().getAction()){
+                active = false;
+                    if(df.transform.position != gameObject.transform.position){
+                    cb.AddDiceFaceToFusion(df);
+                    df.transform.position = gameObject.transform.position;
                 }
             }
         }
@@ -35,7 +32,8 @@ public class FusionZone : MonoBehaviour
     void OnTriggerExit2D(Collider2D other){
         if (other.gameObject.CompareTag("DiceFace"))
         {
-            RemoveDiceFaceToFusion(other.gameObject);
+            cb.RemoveDiceFaceToFusion(other.gameObject);
+            active = true;
         }
     }
 }

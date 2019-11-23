@@ -1,5 +1,6 @@
 ﻿using System; 
 using System.Collections.Generic; 
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class CombatController : MonoBehaviour
     private GameObject activeCharacter;
     public GameObject diceFacePrefab;
     public GameObject replayButton;
+    private List<GameObject> diceFacesToFusion;
 
     public GameObject getPlayer(){
         return player;
@@ -38,14 +40,11 @@ public class CombatController : MonoBehaviour
         enemies  = new List<GameObject>();
         for(int i = 0; i < enemyAmount; i++){
             GameObject enemyPrefab = gc.getEnemyTypesGO()[UnityEngine.Random.Range(0,gc.getEnemyTypesGO().Count)];
-            GameObject go = Instantiate(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), Quaternion.identity);
-            go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
-            go.GetComponent<Enemy>().setCombatController(this);
-            go.GetComponent<Enemy>().refreshHUD();
-            enemies.Add(go);
+            enemies.Add(Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this));
         }
         activeCharacterID = -1;
         activeCharacter = player.gameObject;
+        diceFacesToFusion = new List<GameObject>();
         StartTurn();
     }
 
@@ -70,6 +69,7 @@ public class CombatController : MonoBehaviour
     public void restartCombat(){
         resetBoard();
         resetEnemies();
+        recoverDices();
         replayButton.SetActive(false);
         GameObject.Find("VictoryText").GetComponent<Text>().text = "";
         Player p = player.GetComponent<Player>();
@@ -175,41 +175,40 @@ public class CombatController : MonoBehaviour
 
     void addDiceFaceToBoard(DiceFace df){
         int slot = searchEmptySlot();
-        Vector3 pos = new Vector3(100*slot+50, 50, 0);
-        GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
-        //Apply the rolled DiceFace to the GameObject
-        DiceFace dfgo = go.GetComponent<DiceFace>();
-        dfgo.setFaceColor(df.getFaceColor());
-        dfgo.setBasePosition(pos);
-        dfgo.setSlot(slot);
-        //Sets the text of the GameObject
-        go.GetComponentInChildren<Text>().text = dfgo.getFaceColor().ToString();
-        go.GetComponentInChildren<Image>().color = dfgo.getColor();
+        Vector3 pos = diceFacePrefab.transform.position;
         //Add reference to GameObject
-        boardDiceFaces[slot] = go;
+        boardDiceFaces[slot] = BoardDiceFace.Create(df, diceFacePrefab, slot, new Vector3(100*slot + pos.x, pos.y));
     }
 
     /// <summary>
     /// Picks X dices from the dice bag and add them to the board, X being the size of the board
     /// </summary>
     void drawDices(){
+        if(diceBag.Count <= 0){
+            recoverDices();
+        }
         int i = 0;
         while(i < player.GetComponent<Player>().getMaxDicesOnBoard() && diceBag.Count > 0){
-            boardDices[i] = diceBag[UnityEngine.Random.Range(0,diceBag.Count)];
+            int rand = UnityEngine.Random.Range(0,diceBag.Count);
+            boardDices[i] = diceBag[rand];
+            diceBag.Remove(diceBag[rand]);
             i++;
         }
+        GameObject.Find("DiceBag").GetComponentInChildren<Text>().text = diceBag.Count+"/"+player.GetComponent<Player>().getDiceAmount();
     }
 
     /// <summary>
     /// Rolls the dices on the board to determine the faces that the player can use
     /// </summary>
     void rollDices(){
-        foreach(Dice d in boardDices){
-            //Roll a random face from the dice
-            DiceFace df = d.getFaces()[UnityEngine.Random.Range(0,d.getMaxFaces())];
-            //Instantiate a new BoardDiceFace GameObject
-            addDiceFaceToBoard(df);
+        for(int i = 0; i < boardDices.Length; i++){
+            if(boardDices[i] != null){
+                Dice d = boardDices[i];
+                //Roll a random face from the dice
+                DiceFace df = d.getFaces()[UnityEngine.Random.Range(0,d.getFaces().Count)];
+                //Instantiate a new BoardDiceFace GameObject
+                addDiceFaceToBoard(df);
+            }
         }
     }
 
@@ -220,8 +219,10 @@ public class CombatController : MonoBehaviour
     void discardDice(int boardSlotID){
         //Move dice from board to used
         Dice d = boardDices[boardSlotID];
-        usedDices.Add(d);
-        boardDices[boardSlotID] = null;
+        if(d != null){
+            usedDices.Add(d);
+            boardDices[boardSlotID] = null;
+        }
     }
 
     /// <summary>
@@ -231,7 +232,6 @@ public class CombatController : MonoBehaviour
     void discardDiceFace(int boardSlotID){
         //Move dice face from board to used
         GameObject go = boardDiceFaces[boardSlotID];
-        //usedDiceFaces.Add(boardDiceFaces[boardSlotID]);
         boardDiceFaces[boardSlotID] = null;
         Destroy(go);
     }
@@ -243,6 +243,14 @@ public class CombatController : MonoBehaviour
     void discardDiceAndFace(int boardSlotID){
         discardDiceFace(boardSlotID);
         discardDice(boardSlotID);
+    }
+
+    /// <summary>
+    /// Returns all used dices into the dice bag
+    /// </summary>
+    void recoverDices(){
+        diceBag.AddRange(usedDices);
+        usedDices.Clear();
     }
 
     void resetBoard(){
@@ -259,7 +267,7 @@ public class CombatController : MonoBehaviour
     /// Apply a dice face's effect on the target, then discard the dice
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
-        boardDiceFaces[boardSlotID].GetComponent<DiceFace>().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
+        boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
         discardDiceAndFace(boardSlotID);
         if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
             killEnemy(target);
@@ -274,17 +282,19 @@ public class CombatController : MonoBehaviour
         }
     }
 
+    // ========================= Dice fusion =========================
+
     public bool combinableDiceFaces(GameObject df1, GameObject df2){
-        DiceFaceColor dfc1 = df1.GetComponent<DiceFace>().getFaceColor();
-        DiceFaceColor dfc2 = df1.GetComponent<DiceFace>().getFaceColor();
+        DiceFaceColor dfc1 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+        DiceFaceColor dfc2 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
         List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
         return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
     }
 
     public void combineDiceFaces(GameObject df1, GameObject df2){
         if(combinableDiceFaces(df1,df2)){
-            int dfc1 = (int) df1.GetComponent<DiceFace>().getFaceColor();
-            int dfc2 = (int) df2.GetComponent<DiceFace>().getFaceColor();
+            int dfc1 = (int) df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+            int dfc2 = (int) df2.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
             DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
             discardDiceAndFace(Array.IndexOf(boardDiceFaces, df1));
             discardDiceAndFace(Array.IndexOf(boardDiceFaces, df2));
@@ -292,6 +302,24 @@ public class CombatController : MonoBehaviour
         }else{
             //Prevent fusion
         }
+    }
+
+    public void AddDiceFaceToFusion(GameObject df){
+        if(!diceFacesToFusion.Contains(df)){
+            diceFacesToFusion.Add(df);
+            if(diceFacesToFusion.Count == 2){
+                combineDiceFaces(diceFacesToFusion[0],diceFacesToFusion[1]);
+                diceFacesToFusion.Clear();
+            }
+        }
+    }
+
+    public void RemoveDiceFaceToFusion(GameObject df){
+        diceFacesToFusion.Remove(df);
+    }
+
+    public List<GameObject> getDicesFacesToFusion(){
+        return diceFacesToFusion;
     }
 
     // ========================= Enemy entity Management =========================

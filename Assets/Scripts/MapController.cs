@@ -1,14 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapController : MonoBehaviour
 {
-    ArrayList tiles=new ArrayList();
-    [SerializeField] private Transform Character;
+    List<Tile> tiles=new List<Tile>();
+    //Player player;
     public GameObject prefabTile;
-    int charj = 1;
-
+    Vector3 position;
+    Tile currentTile;
+    
+    public void OnClick(int x,int y){
+        position= new Vector3(x,y);
+        foreach(Tile t in tiles) if(t.position==position) currentTile = t;
+        Debug.Log(position);
+    }
+    /*public Player GetPlayer(){
+        return player;
+    }*/
     void OnGUI()
     {
         //GUI.Box(new Rect(250, 500, 100, 100), "N2");
@@ -16,11 +26,11 @@ public class MapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(Character, new Vector3(0, 0), Quaternion.identity);
-
         Tile start = new Tile();
         start.Create(-300,0,0,prefabTile);
         tiles.Add(start);
+        currentTile=start;
+        position = start.position;
         for (int i=0; i<3; i++)
         {
             for (int j=1;j<4;j++)
@@ -44,7 +54,7 @@ public class MapController : MonoBehaviour
                 }
             }
             // If not Clickable set low alpha
-            if(charj>=i.getLayer()) i.setAlpha(0.1f);
+            //if(currentTile.getLayer()>=i.getLayer()) i.setAlpha(0.1f);
         }
 
     }
@@ -52,9 +62,21 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (Tile i in tiles)
+        {
+            if(currentTile.getLayer()>=i.getLayer()) i.setAlpha(0.1f);
+            else i.setAlpha(1f);
+            if(currentTile.getLayer()>i.getLayer() || (currentTile.getLayer()==i.getLayer() && currentTile.position!=i.position)){
+                foreach (LineRenderer l in i.lines){
+                    l.material.color = new Color(l.material.color.r,l.material.color.g,l.material.color.b,0f);
+                }
+            }
+            else{
+                foreach (LineRenderer l in i.lines){
+                    l.material.color = new Color(l.material.color.r,l.material.color.g,l.material.color.b,1f);
+                }
+            }
+        }
     }
-
-
 
 }
