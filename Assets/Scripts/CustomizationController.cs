@@ -202,6 +202,7 @@ public class CustomizationController : MonoBehaviour
             col.enabled = true;
         }
         GameObject box = GameObject.Find("ConfirmationBox");
+        box.transform.SetAsFirstSibling();
         foreach(Image img in box.GetComponentsInChildren<Image>()){
             Color c = img.color;
             c.a = 0.0f;
