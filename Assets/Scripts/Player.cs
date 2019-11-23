@@ -30,6 +30,10 @@ public class Player : Character
         return dices;
     }
 
+    public void setDices(List<Dice> ds){
+        dices = ds;
+    }
+
     public void addDice(Dice d){
         dices.Add(d);
     }

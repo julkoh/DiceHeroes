@@ -21,6 +21,10 @@ public class Dice
         return faces;
     }
 
+    public void setFaces(List<DiceFace> dfs){
+        faces = dfs;
+    }
+
     public void addFace(DiceFace df){
         faces.Add(df);
     }

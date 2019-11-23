@@ -44,20 +44,12 @@ public class CustomizationDiceFace : MonoBehaviour
         if (other.gameObject.CompareTag("NewDiceFace"))
         {
             if(other.gameObject.GetComponent<NewDiceFace>().getAction()){
-                setDiceFace(other.gameObject.GetComponent<NewDiceFace>().getDiceFace());
-                Debug.Log(getDiceFace().getFaceColor().ToString());
-                updateIcon();
-                Destroy(other.gameObject);
-                customizationController.DrawNewFace();
+                customizationController.SwapDiceFaces(other.gameObject, gameObject);
             }
         }
         
     }
 
     void OnTriggerExit2D(Collider2D other){
-    }
-
-    void updateIcon(){
-        gameObject.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+getDiceFace().getFaceColor().ToString().ToLower()+".png");
     }
 }
