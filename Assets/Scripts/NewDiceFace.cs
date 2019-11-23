@@ -1,27 +1,22 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEditor;
 
-public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
+public class NewDiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private DiceFace diceFace;
     private Vector3 basePosition;
     private bool reposition;
     private bool action;
-    private int slot;
 
-    public static GameObject Create(DiceFace df, GameObject diceFacePrefab, int slot, Vector3 pos){
-        GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
+    public static GameObject Create(DiceFace df, GameObject newDiceFacePrefab, Vector3 pos){
+        GameObject go = Instantiate(newDiceFacePrefab, pos, Quaternion.identity);
         go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
-        //Apply the rolled DiceFace to the GameObject
-        BoardDiceFace dfgo = go.GetComponent<BoardDiceFace>();
-        dfgo.setDiceFace(df);
-        dfgo.setBasePosition(go.transform.position);
-        dfgo.setSlot(slot);
-        //Sets the text of the GameObject
+        go.GetComponent<NewDiceFace>().setDiceFace(df);
+        go.GetComponent<NewDiceFace>().setBasePosition(go.transform.position);
         go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+df.getFaceColor().ToString().ToLower()+".png");
         return go;
     }
@@ -39,7 +34,7 @@ public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
         diceFace = df;
     }
 
-    public Vector3 getBasePosition(){
+     public Vector3 getBasePosition(){
         return basePosition;
     }
 
@@ -49,14 +44,6 @@ public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
 
     public bool getAction(){
         return action;
-    }
-
-    public int getSlot(){
-        return slot;
-    }
-
-    public void setSlot(int s){
-        slot = s;
     }
 
     public void OnDrag(PointerEventData pointerEventData){
@@ -73,19 +60,15 @@ public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
     }
 
     void OnTriggerStay2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("CustomizationDiceFace"))
         {
-            if(other.gameObject.CompareTag("FusionZone") && !other.gameObject.GetComponent<FusionZone>().getActive()){
-                reposition = true;
-            }else{
-                reposition = false;
-            }
+            reposition = false;
         }
         
     }
 
     void OnTriggerExit2D(Collider2D other){
-        if (other.gameObject.CompareTag("FusionZone") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("CustomizationDiceFace"))
         {
             reposition = true;
         }

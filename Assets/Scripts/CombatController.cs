@@ -40,11 +40,7 @@ public class CombatController : MonoBehaviour
         enemies  = new List<GameObject>();
         for(int i = 0; i < enemyAmount; i++){
             GameObject enemyPrefab = gc.getEnemyTypesGO()[UnityEngine.Random.Range(0,gc.getEnemyTypesGO().Count)];
-            GameObject go = Instantiate(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), Quaternion.identity);
-            go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
-            go.GetComponent<Enemy>().setCombatController(this);
-            go.GetComponent<Enemy>().refreshHUD();
-            enemies.Add(go);
+            enemies.Add(Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this));
         }
         activeCharacterID = -1;
         activeCharacter = player.gameObject;
@@ -179,19 +175,9 @@ public class CombatController : MonoBehaviour
 
     void addDiceFaceToBoard(DiceFace df){
         int slot = searchEmptySlot();
-        Vector3 pos = new Vector3(100*slot+diceFacePrefab.transform.position.x, diceFacePrefab.transform.position.y);
-        GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
-        //Apply the rolled DiceFace to the GameObject
-        BoardDiceFace dfgo = go.GetComponent<BoardDiceFace>();
-        dfgo.setDiceFace(df);
-        dfgo.setBasePosition(dfgo.gameObject.transform.position);
-        dfgo.setSlot(slot);
-        //Sets the text of the GameObject
-        string faceColorName = dfgo.getDiceFace().getFaceColor().ToString();
-        go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+faceColorName.ToLower()+".png");
+        Vector3 pos = diceFacePrefab.transform.position;
         //Add reference to GameObject
-        boardDiceFaces[slot] = go;
+        boardDiceFaces[slot] = BoardDiceFace.Create(df, diceFacePrefab, slot, new Vector3(100*slot + pos.x, pos.y));
     }
 
     /// <summary>
@@ -219,7 +205,7 @@ public class CombatController : MonoBehaviour
             if(boardDices[i] != null){
                 Dice d = boardDices[i];
                 //Roll a random face from the dice
-                DiceFace df = d.getFaces()[UnityEngine.Random.Range(0,d.getMaxFaces())];
+                DiceFace df = d.getFaces()[UnityEngine.Random.Range(0,d.getFaces().Count)];
                 //Instantiate a new BoardDiceFace GameObject
                 addDiceFaceToBoard(df);
             }

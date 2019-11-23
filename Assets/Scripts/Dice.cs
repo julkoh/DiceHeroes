@@ -6,26 +6,15 @@ using System.Threading;
 
 public class Dice
 {
-    private int maxFaces;
     private List<DiceFace> faces;
-
     
-    public Dice()
+    public Dice(int faceAmount)
     {
-        setMaxFaces(4);
         faces = new List<DiceFace>();
-        for(int i = 0; i < maxFaces; i++){
-            addFace(new DiceFace((DiceFaceColor)new System.Random().Next(3)));
+        for(int i = 0; i < faceAmount; i++){
+            addFace(new DiceFace((DiceFaceColor)new System.Random().Next(4)));
             Thread.Sleep(20);
         }
-    }
-
-    public int getMaxFaces(){
-        return maxFaces;
-    }
-
-    public void setMaxFaces(int val){
-        maxFaces = val;
     }
 
     public List<DiceFace> getFaces(){
@@ -34,5 +23,9 @@ public class Dice
 
     public void addFace(DiceFace df){
         faces.Add(df);
+    }
+
+    public void removeFace(DiceFace df){
+        faces.Remove(df);
     }
 }

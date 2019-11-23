@@ -8,6 +8,8 @@ TagManager:
   - FusionZone
   - Enemy
   - replay
+  - NewDiceFace
+  - CustomizationDiceFace
   layers:
   - Default
   - TransparentFX

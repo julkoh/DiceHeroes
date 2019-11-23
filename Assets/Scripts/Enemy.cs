@@ -10,6 +10,14 @@ public class Enemy : Character
     private List<Effect> chosenAbility;
     private Character chosenTarget;
 
+    public static GameObject Create(GameObject enemyPrefab, Vector3 pos, CombatController cb){
+        GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+            go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+            go.GetComponent<Enemy>().setCombatController(cb);
+            go.GetComponent<Enemy>().refreshHUD();
+            return go;
+    }
+
     public List<List<Effect>> getAbilities(){
         return abilities;
     }

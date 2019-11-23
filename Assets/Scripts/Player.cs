@@ -59,9 +59,9 @@ public class Player : Character
         setCurrentHP(getMaxHP());
         setGold(0);
         setDiceAmount(6);
-        maxDicesOnBoard = 4;
+        setMaxDicesOnBoard(4);
         for (int i = 0; i < diceAmount; i++){
-            addDice(new Dice());
+            addDice(new Dice(4));
         }
     }
 }
