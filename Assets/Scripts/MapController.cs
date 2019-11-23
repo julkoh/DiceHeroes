@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MapController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class MapController : MonoBehaviour
     public void OnClick(int x,int y){
         position= new Vector3(x,y);
         foreach(Tile t in tiles) if(t.position==position) currentTile = t;
+        SceneManager.LoadScene("CombatScene");
         Debug.Log(position);
     }
     /*public Player GetPlayer(){
@@ -64,8 +66,7 @@ public class MapController : MonoBehaviour
     {
         foreach (Tile i in tiles)
         {
-            if(currentTile.getLayer()>=i.getLayer()) i.setAlpha(0.1f);
-            else i.setAlpha(1f);
+            //Change color of lines to see if they are usable
             if(currentTile.getLayer()>i.getLayer() || (currentTile.getLayer()==i.getLayer() && currentTile.position!=i.position)){
                 foreach (LineRenderer l in i.lines){
                     l.material.color = new Color(l.material.color.r,l.material.color.g,l.material.color.b,0f);
@@ -76,6 +77,13 @@ public class MapController : MonoBehaviour
                     l.material.color = new Color(l.material.color.r,l.material.color.g,l.material.color.b,1f);
                 }
             }
+            //Change the color of active tiles and deactivate them
+            if(currentTile.getLayer()>=i.getLayer())
+            {
+                i.setAlpha(0.3f);
+                i.button.interactable = false;
+            } 
+            else i.setAlpha(1f);
         }
     }
 
