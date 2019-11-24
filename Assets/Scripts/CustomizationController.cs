@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using System;
 
 public class CustomizationController : MonoBehaviour
 {
-    public GameController gc;
-    private GameObject player;
+    private Player player;
     private List<Dice> diceBag;
     public GameObject dicePrefab;
     public GameObject diceFacePrefab;
@@ -22,10 +21,6 @@ public class CustomizationController : MonoBehaviour
         ADD, REMOVE, SWAP
     }
 
-    public GameObject getPlayer(){
-        return player;
-    }
-
     // ========================= Display Management =========================
 
     /// <summary>
@@ -33,8 +28,8 @@ public class CustomizationController : MonoBehaviour
     /// </summary>
     void Start(){
         modificationType = null;
-        player = gc.getPlayer();
-        diceBag = player.GetComponent<Player>().getDices();
+        player = GameController.getPlayer();
+        diceBag = player.getDices();
         displayedDices = new List<GameObject>();
         displayedDiceFaces = new List<List<GameObject>>();
         DisplayDices();
@@ -125,7 +120,8 @@ public class CustomizationController : MonoBehaviour
             }
         }
         saveChangestoPlayer();
-        Debug.Log("Customization finished");
+        GameController.setPlayer(player);
+        SceneManager.LoadScene("CombatScene");
     }
 
     void saveChangestoController(){
@@ -143,7 +139,7 @@ public class CustomizationController : MonoBehaviour
         foreach(GameObject go in displayedDices){
             dices.Add(go.GetComponent<CustomizationDice>().getDice());
         }
-        player.GetComponent<Player>().setDices(dices);
+        player.setDices(dices);
     }
 
     void showConfirmationBox(Action action){

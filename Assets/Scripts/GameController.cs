@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public static class GameController
 {
-    public GameObject player;
-    public List<GameObject> enemyTypesGO;
+    private static Player player = new Player(20,0,6,4);
+    private static List<Enemy> enemyTypes = new List<Enemy>();
 
-    public GameObject getPlayer(){
+    public static Player getPlayer(){
         return player;
     }
 
-    public List<GameObject> getEnemyTypesGO(){
-        return enemyTypesGO;
+    public static void setPlayer(Player p){
+        player = p;
+    }
+
+    public static List<Enemy> getEnemyTypes(){
+        return enemyTypes;
     }
 
 }
