@@ -12,7 +12,7 @@ public class Dice
     {
         faces = new List<DiceFace>();
         for(int i = 0; i < faceAmount; i++){
-            addFace(new DiceFace((DiceFaceColor)new System.Random().Next(4)));
+            addFace(new DiceFace((DiceFaceColor)new System.Random().Next(4),1));
             Thread.Sleep(20);
         }
     }

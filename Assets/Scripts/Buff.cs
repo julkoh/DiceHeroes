@@ -37,3 +37,9 @@ public class Ice : Buff{
         setStacks(getStacks()-1);
     }
 }
+
+public class AntiFusion : Buff{
+    public override void applyBuff(Character c){
+        setStacks(getStacks()-1);
+    }
+}

@@ -109,6 +109,8 @@ public class Confuse : Effect
             Enemy e = (Enemy)target;
             e.chooseAbility();
             target.refreshHUD();
+        }else if(target is Player){
+            new AddBuff(new AntiFusion(), getValue(), "").apply(source, target);
         }
     }
 }

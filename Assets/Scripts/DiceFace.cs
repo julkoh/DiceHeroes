@@ -6,14 +6,16 @@ public class DiceFace
 {
     private DiceFaceColor faceColor;
     private List<Effect> effects = new List<Effect>();
+    private float factor;
 
     public DiceFace()
     {
         setFaceColor((DiceFaceColor)new System.Random().Next(4));
     }
 
-    public DiceFace(DiceFaceColor dfc)
+    public DiceFace(DiceFaceColor dfc, float f)
     {
+        setFactor(f);
         setFaceColor(dfc);
     }
 
@@ -25,36 +27,36 @@ public class DiceFace
         faceColor = dfc;
         switch(faceColor){
             case DiceFaceColor.WATER :
-                AddEffect(new Damage(1, ""));
-                AddEffect(new Heal(1, ""));
+                AddEffect(new Damage((int)factor, ""));
+                AddEffect(new Heal((int)factor, ""));
                 break;
             case DiceFaceColor.EARTH :
-                AddEffect(new Damage(1, ""));
-                AddEffect(new Shield(1, ""));
+                AddEffect(new Damage((int)factor, ""));
+                AddEffect(new Shield((int)factor, ""));
                 break;
             case DiceFaceColor.FIRE :
-                AddEffect(new AddBuff(new Fire(), 1, ""));
+                AddEffect(new AddBuff(new Fire(), (int)factor, ""));
                 break;
             case DiceFaceColor.NEUTRAL :
-                AddEffect(new Damage(1, ""));
+                AddEffect(new Damage((int)factor, ""));
                 break;
             case DiceFaceColor.LAVA :
-                AddEffect(new Lava(2, ""));
+                AddEffect(new Lava((int)(2*factor), ""));
                 break;
             case DiceFaceColor.ROCK :
-                AddEffect(new ShieldDamage(2, ""));
+                AddEffect(new ShieldDamage((int)(2*factor), ""));
                 break;
             case DiceFaceColor.ICE :
-                AddEffect(new AddBuff(new Ice(), 1, ""));
+                AddEffect(new AddBuff(new Ice(), (int)factor, ""));
                 break;
             case DiceFaceColor.PHYSICAL :
-                AddEffect(new TrueDamage(2, ""));
+                AddEffect(new TrueDamage((int)(2*factor), ""));
                 break;
             case DiceFaceColor.POISON :
-                AddEffect(new AddBuff(new Poison(), 3, ""));
+                AddEffect(new AddBuff(new Poison(), (int)(2*factor), ""));
                 break;
             case DiceFaceColor.RADIATION :
-                AddEffect(new Confuse(0, ""));
+                AddEffect(new Confuse((int)factor, ""));
                 break;
         }
     }
@@ -65,6 +67,14 @@ public class DiceFace
 
     public void AddEffect(Effect e){
         effects.Add(e);
+    }
+
+    public float getFactor(){
+        return factor;
+    }
+
+    public void setFactor(float f){
+        factor = f;
     }
 
     public void applyEffects(Character source, Character target){

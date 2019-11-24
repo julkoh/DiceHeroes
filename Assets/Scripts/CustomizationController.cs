@@ -53,7 +53,7 @@ public class CustomizationController : MonoBehaviour
     }
 
     public void DrawNewFace(){
-        NewDiceFace.Create(new DiceFace((DiceFaceColor)new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length)), newDiceFacePrefab, newDiceFacePrefab.transform.position);
+        NewDiceFace.Create(new DiceFace((DiceFaceColor)new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length),1), newDiceFacePrefab, newDiceFacePrefab.transform.position);
     }
 
     public void RemoveDiceFace(GameObject go){
@@ -121,7 +121,7 @@ public class CustomizationController : MonoBehaviour
         }
         saveChangestoPlayer();
         GameController.setPlayer(player);
-        SceneManager.LoadScene("CombatScene");
+        SceneManager.LoadScene("MapScene");
     }
 
     void saveChangestoController(){

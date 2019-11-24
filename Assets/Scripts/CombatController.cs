@@ -12,13 +12,13 @@ public class CombatController : MonoBehaviour
     private Dice[] boardDices; //Dices on the player's board
     private GameObject[] boardDiceFaces; //Dice faces on the player's board
     private List<Dice> usedDices;
-    private int enemyAmount;
     private List<GameObject> enemies;
     private int activeCharacterID; //Active character number : -1 for the player, >0 for enemies (index in the "enemies" list)
     private GameObject activeCharacter;
     public GameObject diceFacePrefab;
     public GameObject replayButton;
     private List<GameObject> diceFacesToFusion;
+    private bool fusion = true;
 
     // ========================= Combat Management =========================
 
@@ -33,9 +33,8 @@ public class CombatController : MonoBehaviour
         boardDiceFaces = new GameObject[player.GetComponent<Player>().getMaxDicesOnBoard()];
         diceBag = player.GetComponent<Player>().getDices();
         usedDices = new List<Dice>();
-        enemyAmount = UnityEngine.Random.Range(1,2);
         enemies  = new List<GameObject>();
-        for(int i = 0; i < enemyAmount; i++){
+        for(int i = 0; i < GameController.getEnemyAmount(); i++){
             GameObject enemyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemy.prefab");
             enemies.Add(Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this));
         }
@@ -56,9 +55,12 @@ public class CombatController : MonoBehaviour
         /*
         show endCombat screen here
         */
+        
         emptyBoard();
         recoverDices();
         GameController.setPlayer(player.GetComponent<Player>());
+        GameController.clearEnemytypes();
+        GameController.setEnemyAmount(0);
         SceneManager.LoadScene("CustomizationScene");
         /*GameObject vt = GameObject.Find("VictoryText");
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
@@ -89,6 +91,7 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void StartTurn(){
         bool play = activeCharacter.GetComponent<Character>().getMatchingBuff("Ice") == null;
+        fusion = activeCharacter.GetComponent<Character>().getMatchingBuff("AntiFusion") == null;
         activeCharacter.GetComponent<Character>().applyBuffs();
         if(activeCharacter.GetComponent<Character>().getCurrentHP() <= 0){
             if(activeCharacter.GetComponent<Character>() is Enemy){
@@ -100,6 +103,21 @@ public class CombatController : MonoBehaviour
                 foreach(GameObject enemy in enemies){
                     enemy.GetComponent<Enemy>().chooseAbility();
                     enemy.GetComponent<Enemy>().setChosenTarget(player.GetComponent<Player>());
+                }
+                if(!fusion){
+                    for (int i=0; i < GameObject.Find("FusionZone").transform.childCount; i++){
+                        GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<FusionZone>().setActive(false);
+                        Color c = GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<Image>().color;
+                        c.a = 0.0f;
+                        GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<Image>().color = c;
+                    }
+                }else{
+                    for (int i=0; i < GameObject.Find("FusionZone").transform.childCount; i++){
+                        GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<FusionZone>().setActive(true);
+                        Color c = GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<Image>().color;
+                        c.a = 1.0f;
+                        GameObject.Find("FusionZone").transform.GetChild(i).gameObject.GetComponent<Image>().color = c;
+                    }
                 }
                 if(play){
                     drawDices();
@@ -287,10 +305,14 @@ public class CombatController : MonoBehaviour
     // ========================= Dice fusion =========================
 
     public bool combinableDiceFaces(GameObject df1, GameObject df2){
-        DiceFaceColor dfc1 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
-        DiceFaceColor dfc2 = df2.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
-        List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
-        return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
+        if(fusion){
+            DiceFaceColor dfc1 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+            DiceFaceColor dfc2 = df2.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
+            List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
+            return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
+        }else{
+            return fusion;
+        }
     }
 
     public void combineDiceFaces(GameObject df1, GameObject df2){
@@ -299,7 +321,7 @@ public class CombatController : MonoBehaviour
         DiceFaceColor dfc = new DiceFaceColorCombine().matrix[dfc1,dfc2];
         discardDiceAndFace(Array.IndexOf(boardDiceFaces, df1));
         discardDiceAndFace(Array.IndexOf(boardDiceFaces, df2));
-        addDiceFaceToBoard(new DiceFace(dfc));
+        addDiceFaceToBoard(new DiceFace(dfc,1));
     }
 
     public void AddDiceFaceToFusion(GameObject df){
