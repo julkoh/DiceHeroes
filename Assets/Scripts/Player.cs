@@ -10,6 +10,31 @@ public class Player : Character
     private List<Item> items = new List<Item>();
     private int maxDicesOnBoard; //The maximum number of Dices on the board AKA the number of Dice slots on the board AKA the board's size
 
+    public Player(){}
+
+    public Player(int hp, int gold, int diceAmount, int maxDicesOnBoard)
+    {
+        setMaxHP(hp);
+        setCurrentHP(getMaxHP());
+        setGold(gold);
+        setDiceAmount(diceAmount);
+        setMaxDicesOnBoard(maxDicesOnBoard);
+        for (int i = 0; i < diceAmount; i++){
+            addDice(new Dice(4));
+        }
+    }
+
+    void Awake(){
+        Player p = GameController.getPlayer();
+        setMaxHP(p.getMaxHP());
+        setCurrentHP(p.getCurrentHP());
+        setGold(p.getGold());
+        setDiceAmount(p.getDiceAmount());
+        setMaxDicesOnBoard(p.getMaxDicesOnBoard());
+        setDices(p.getDices());
+        setItems(p.getItems());
+    }
+
     public int getGold(){
         return gold;
     }
@@ -42,6 +67,10 @@ public class Player : Character
         return items;
     }
 
+    public void setItems(List<Item> i){
+        items = i;
+    }
+
     public void addItem(Item i){
         items.Add(i);
     }
@@ -52,20 +81,5 @@ public class Player : Character
 
     public void setMaxDicesOnBoard(int val){
         maxDicesOnBoard = val;
-    }
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    void Awake()
-    {
-        setMaxHP(20);
-        setCurrentHP(getMaxHP());
-        setGold(0);
-        setDiceAmount(6);
-        setMaxDicesOnBoard(4);
-        for (int i = 0; i < diceAmount; i++){
-            addDice(new Dice(4));
-        }
     }
 }

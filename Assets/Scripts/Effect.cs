@@ -48,6 +48,7 @@ public class Damage : Effect
             int HPLeft = target.getCurrentHP() > attackValue ? target.getCurrentHP() - attackValue : 0;
             target.setCurrentHP(HPLeft);
         }
+        target.refreshHUD();
     }
 }
 
@@ -58,6 +59,7 @@ public class Shield : Effect
 
     public override void apply(Character source, Character target){
         source.setArmor(source.getArmor() + getValue());
+        source.refreshHUD();
     }
 }
 
@@ -68,6 +70,7 @@ public class ShieldDamage : Effect
 
     public override void apply(Character source, Character target){
         new Damage((int)(source.getArmor()*getValue()), "").apply(source, target);
+        target.refreshHUD();
     }
 }
 
@@ -79,6 +82,7 @@ public class TrueDamage : Effect
     public override void apply(Character source, Character target){
         int HPLeft = target.getCurrentHP() > getValue() ? target.getCurrentHP() - getValue() : 0;
         target.setCurrentHP(HPLeft);
+        target.refreshHUD();
     }
 }
 
@@ -88,8 +92,10 @@ public class Heal : Effect
     }
 
     public override void apply(Character source, Character target){
-        if(source.getCurrentHP()+getValue() <= source.getMaxHP())
+        if(source.getCurrentHP()+getValue() <= source.getMaxHP()){
             source.setCurrentHP(source.getCurrentHP()+getValue());
+            source.refreshHUD();
+        }
     }
 }
 
@@ -101,7 +107,10 @@ public class Confuse : Effect
     public override void apply(Character source, Character target){
         if(target is Enemy){
             Enemy e = (Enemy)target;
-            e.chooseAbilityAndTarget();
+            e.chooseAbility();
+            target.refreshHUD();
+        }else if(target is Player){
+            new AddBuff(new AntiFusion(), getValue(), "").apply(source, target);
         }
     }
 }
@@ -118,6 +127,7 @@ public class AddBuff : Effect
     public override void apply(Character source, Character target){
         buff.setStacks(getValue());
         target.addBuff(buff);
+        target.refreshHUD();
     }
 }
 
@@ -132,6 +142,7 @@ public class Lava : Effect
             int stacks = buff.getStacks();
             buff.applyBuff(target);
             buff.setStacks(stacks*getValue());
+            target.refreshHUD();
         }
     }
 }
