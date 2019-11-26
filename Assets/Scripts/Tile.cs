@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEditor.Events;
 using UnityEngine.Events;
@@ -32,7 +33,17 @@ public class Tile : MonoBehaviour
         tile.transform.Find("Image").GetComponent<Image>().color=c;
         mapcontroller = GameObject.Find("MapHandler");
         button = tile.transform.Find("Image").gameObject.GetComponent<Button>();
-        button.onClick.AddListener(()=>{mapcontroller.GetComponent<MapController>().OnClick(x,y);});
+        button.onClick.AddListener(()=>{
+            mapcontroller.GetComponent<MapController>().OnClick(x,y);
+            //Action from type of tile
+            GameController.setEnemyAmount(1);
+            GameController.addEnemyType(EnemyType.BANDIT);
+            GameController.addEnemyType(EnemyType.BRIGAND);
+            GameController.addEnemyType(EnemyType.BRUTE);
+            GameController.addEnemyType(EnemyType.DEALER);
+            GameController.addEnemyType(EnemyType.JUNKIE);
+            GameController.addEnemyType(EnemyType.RACKETEER);
+        });
         //Debug.Log(x);
     }
     public void Links(Tile t){

@@ -14,9 +14,13 @@ public class MapController : MonoBehaviour
     
     public void OnClick(int x,int y){
         position= new Vector3(x,y);
-        foreach(Tile t in tiles) if(t.position==position) currentTile = t;
-        SceneManager.LoadScene("CombatScene");
-        Debug.Log(position);
+        foreach(Tile t in tiles) 
+            if(t.position==position) {
+                currentTile = t;
+                GameController.setTile(currentTile);
+                SceneManager.LoadScene("CombatScene");
+            }
+        //Debug.Log(position);
     }
     /*public Player GetPlayer(){
         return player;
@@ -32,7 +36,13 @@ public class MapController : MonoBehaviour
         start.Create(-300,0,0,prefabTile);
         tiles.Add(start);
         currentTile=start;
-        position = start.position;
+        if(GameController.getTile().position == new Vector3(0,0,0) && GameController.getTile().getLayer() == 0){
+            GameController.setTile(currentTile);
+            position = start.position;
+        }else{
+            currentTile = GameController.getTile();
+            position = currentTile.position;
+        }
         for (int i=0; i<3; i++)
         {
             for (int j=1;j<4;j++)

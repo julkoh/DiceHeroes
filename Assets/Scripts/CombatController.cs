@@ -55,21 +55,18 @@ public class CombatController : MonoBehaviour
         /*
         show endCombat screen here
         */
-        
-        emptyBoard();
-        recoverDices();
-        GameController.setPlayer(player.GetComponent<Player>());
-        GameController.clearEnemytypes();
-        GameController.setEnemyAmount(0);
-        SceneManager.LoadScene("CustomizationScene");
-        /*GameObject vt = GameObject.Find("VictoryText");
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
-            vt.GetComponent<Text>().text = "Enemies won !";
+            GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
+        }else if(enemies.Count == 0){
+            //GameObject.Find("VictoryText").GetComponent<Text>().text = "Player won !";
+            emptyBoard();
+            recoverDices();
+            GameController.setPlayer(player.GetComponent<Player>());
+            GameController.clearEnemytypes();
+            GameController.setEnemyAmount(0);
+            SceneManager.LoadScene("CustomizationScene");
         }
-        if(enemies.Count == 0){
-            vt.GetComponent<Text>().text = "Player won !";
-        }
-        replayButton.SetActive(true);*/
+        //replayButton.SetActive(true);
     }
 
     public void restartCombat(){

@@ -7,9 +7,10 @@ public static class GameController
 {
     private static Player player = new Player(20,0,6,4);
     private static List<EnemyType> enemyTypes = new List<EnemyType>(){
-        EnemyType.JUNKIE, EnemyType.BRUTE
+        EnemyType.BRUTE
     };
     private static int enemyAmount = 1;
+    private static Tile tile = new Tile();
 
     public static Player getPlayer(){
         return player;
@@ -41,5 +42,13 @@ public static class GameController
 
     public static void setEnemyAmount(int i){
         enemyAmount = i;
+    }
+
+    public static Tile getTile(){
+        return tile;
+    }
+
+    public static void setTile(Tile t){
+        tile = t;
     }
 }
