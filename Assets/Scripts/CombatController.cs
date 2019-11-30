@@ -27,6 +27,7 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void Start(){
         player = GameObject.Find("Player");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("CombatScene"));
         player.AddComponent<Player>();
         player.GetComponent<Player>().refreshHUD();
         boardDices = new Dice[player.GetComponent<Player>().getMaxDicesOnBoard()];
@@ -64,7 +65,8 @@ public class CombatController : MonoBehaviour
             GameController.setPlayer(player.GetComponent<Player>());
             GameController.clearEnemytypes();
             GameController.setEnemyAmount(0);
-            SceneManager.LoadScene("CustomizationScene");
+            SceneManager.UnloadSceneAsync("CombatScene");
+            SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
         }
         //replayButton.SetActive(true);
     }

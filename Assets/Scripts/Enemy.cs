@@ -20,7 +20,7 @@ public class Enemy : Character
 
     public static GameObject Create(GameObject enemyPrefab, Vector3 pos, CombatController cb){
         GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+        go.transform.SetParent(GameObject.Find("CanvasCombat").GetComponent<RectTransform>().transform, false);
         go.GetComponent<Enemy>().setCombatController(cb);
         go.GetComponent<Enemy>().refreshHUD();
         return go;

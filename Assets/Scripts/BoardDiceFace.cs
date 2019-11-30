@@ -15,7 +15,7 @@ public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
 
     public static GameObject Create(DiceFace df, GameObject diceFacePrefab, int slot, Vector3 pos){
         GameObject go = Instantiate(diceFacePrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+        go.transform.SetParent(GameObject.Find("CanvasCombat").GetComponent<RectTransform>().transform, false);
         //Apply the rolled DiceFace to the GameObject
         BoardDiceFace dfgo = go.GetComponent<BoardDiceFace>();
         dfgo.setDiceFace(df);

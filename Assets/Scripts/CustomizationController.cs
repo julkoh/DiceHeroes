@@ -27,6 +27,7 @@ public class CustomizationController : MonoBehaviour
     /// Sets up the combat environment
     /// </summary>
     void Start(){
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("CustomizationScene"));
         modificationType = null;
         player = GameController.getPlayer();
         diceBag = player.getDices();
@@ -121,7 +122,9 @@ public class CustomizationController : MonoBehaviour
         }
         saveChangestoPlayer();
         GameController.setPlayer(player);
-        SceneManager.LoadScene("MapScene");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MapScene"));
+        SceneManager.UnloadSceneAsync("CustomizationScene");
+        
     }
 
     void saveChangestoController(){

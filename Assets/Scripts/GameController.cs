@@ -11,6 +11,11 @@ public static class GameController
     };
     private static int enemyAmount = 1;
     private static Tile tile = new Tile();
+    public static List<Tile> tiles=new List<Tile>();
+    public static Vector3 position;
+    public static Tile currentTile;
+    public static bool mapInit=false;
+    public static  List<LineRenderer> linesHistory = new List<LineRenderer>();
 
     public static Player getPlayer(){
         return player;
