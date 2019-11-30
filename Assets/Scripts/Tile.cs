@@ -14,7 +14,6 @@ public class Tile : MonoBehaviour
     public GameObject tile;
     int layer;
     public List<LineRenderer> lines=new List<LineRenderer>();
-    public List<GameObject> golines=new List<GameObject>();
     GameObject mapcontroller;
     public Button button;
     public Vector3 position;
@@ -47,23 +46,16 @@ public class Tile : MonoBehaviour
         });
         //Debug.Log(x);
     }
-    public void reload(){
-        Instantiate(tile);
-        foreach(GameObject l in golines){
-            Instantiate(l);
-        }
-    }
     public void Links(Tile t){
         GameObject line = new GameObject();
         line.transform.SetParent(GameObject.Find("CanvasMap").GetComponent<RectTransform>().transform,false);
         LineRenderer lr = line.AddComponent<LineRenderer>();
         lr.material = new Material (Shader.Find ("Sprites/Default"));
         lr.material.color = Color.red;
-        lr.widthMultiplier = 0.1f;
+        lr.widthMultiplier = 0.02f;
         lr.sortingOrder=0;
         lr.SetPosition(0,tile.transform.position);
         lr.SetPosition(1,t.tile.transform.position);
-        golines.Add(line);
         lines.Add(lr);
     }
 

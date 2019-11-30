@@ -10,11 +10,10 @@ public static class GameController
         EnemyType.BRUTE
     };
     private static int enemyAmount = 1;
-    private static Tile tile = new Tile();
     public static List<Tile> tiles=new List<Tile>();
     public static Vector3 position;
     public static Tile currentTile;
-    public static bool mapInit=false;
+    public static bool mapScene=true;
     public static  List<LineRenderer> linesHistory = new List<LineRenderer>();
 
     public static Player getPlayer(){
@@ -47,13 +46,5 @@ public static class GameController
 
     public static void setEnemyAmount(int i){
         enemyAmount = i;
-    }
-
-    public static Tile getTile(){
-        return tile;
-    }
-
-    public static void setTile(Tile t){
-        tile = t;
     }
 }

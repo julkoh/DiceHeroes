@@ -28,7 +28,6 @@ public class CombatController : MonoBehaviour
     /// </summary>
     void Start(){
         player = GameObject.Find("Player");
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("CombatScene"));
         player.AddComponent<Player>();
         player.GetComponent<Player>().refreshHUD();
         boardDices = new Dice[player.GetComponent<Player>().getMaxDicesOnBoard()];
