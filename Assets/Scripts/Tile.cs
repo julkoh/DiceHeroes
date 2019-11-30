@@ -17,7 +17,8 @@ public class Tile : MonoBehaviour
     GameObject mapcontroller;
     public Button button;
     public Vector3 position;
-    Tiletype tiletype;
+    public Tiletype tiletype;
+
     Color c;
 
     public Tile(){
@@ -26,7 +27,44 @@ public class Tile : MonoBehaviour
     {
         this.layer=layer;
         position=new Vector3(x,y);
-        tiletype = (Tiletype) UnityEngine.Random.Range(0,Enum.GetNames(typeof(Tiletype)).Length);
+        int random = UnityEngine.Random.Range(0,10);
+        switch(random)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                tiletype = Tiletype.GANG1;
+            break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                tiletype = Tiletype.GANG2;
+            break;
+            case 8:
+            case 9:
+                if(GameController.maxshop>0)
+                {
+                    tiletype = Tiletype.SHOP;
+                    GameController.maxshop--;
+                }
+                else
+                {
+                    if (UnityEngine.Random.Range(0,2)==0)
+                    {
+                        tiletype = Tiletype.GANG1;
+                    }
+                    else
+                    {
+                        tiletype = Tiletype.GANG2;
+                    }
+                }
+            break;
+        }
+        if (layer==4){
+            tiletype=Tiletype.BOSS;
+        }
         initColor();
         tile = Instantiate(prefabTile, position,Quaternion.identity);
         tile.transform.SetParent(GameObject.Find("CanvasMap").GetComponent<RectTransform>().transform,false);
@@ -36,13 +74,41 @@ public class Tile : MonoBehaviour
         button.onClick.AddListener(()=>{
             mapcontroller.GetComponent<MapController>().OnClick(x,y);
             //Action from type of tile
-            GameController.setEnemyAmount(1);
-            GameController.addEnemyType(EnemyType.BANDIT);
-            GameController.addEnemyType(EnemyType.BRIGAND);
-            GameController.addEnemyType(EnemyType.BRUTE);
-            GameController.addEnemyType(EnemyType.DEALER);
-            GameController.addEnemyType(EnemyType.JUNKIE);
-            GameController.addEnemyType(EnemyType.RACKETEER);
+            GameController.setEnemyAmount(UnityEngine.Random.Range(1,3));
+            switch(tiletype)
+            {
+                case Tiletype.GANG1:
+                    GameController.addEnemyType(EnemyType.BANDIT);
+                    GameController.addEnemyType(EnemyType.BRIGAND);
+                    GameController.addEnemyType(EnemyType.JUNKIE);
+                break;
+                case Tiletype.GANG2:
+                    GameController.addEnemyType(EnemyType.BRUTE);
+                    GameController.addEnemyType(EnemyType.DEALER);
+                    GameController.addEnemyType(EnemyType.RACKETEER);
+                break;
+                case Tiletype.SHOP:
+                //add nothing
+                break;
+                    
+                case Tiletype.BOSS:
+                if (GameController.karma > 0)
+                {
+                //add boss Type 1
+                }
+                if (GameController.karma < 0)
+                {
+                //add boss Type 2
+                }
+                else
+                {
+                //add Random boss Type 1,2
+                }
+                break;
+            }
+            
+            
+            
         });
         //Debug.Log(x);
     }
@@ -71,20 +137,24 @@ public class Tile : MonoBehaviour
     public void initColor(){
         switch(tiletype){
             case Tiletype.GANG1:
+                //GREEN
                 c = new Color(0,255,0);
             break;
             case Tiletype.GANG2:
+                //PURPLE
                 c = new Color(191,0,255);
             break;
             case Tiletype.SHOP:
+                //YELLOW
                 c = new Color(255,255,0);
             break;
-            case Tiletype.EVENT:
+            case Tiletype.BOSS:
+                //WHITE
                 c = new Color(255,255,255);
             break;
         }
     }
 }
 public enum Tiletype {
-    GANG1, GANG2, SHOP, EVENT
+    GANG1, GANG2, SHOP, BOSS
 }
