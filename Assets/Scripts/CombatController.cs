@@ -1,5 +1,6 @@
 ﻿using System; 
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,6 +58,7 @@ public class CombatController : MonoBehaviour
         show endCombat screen here
         */
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
+            PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_die", null);
             GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
         }else if(enemies.Count == 0){
             //GameObject.Find("VictoryText").GetComponent<Text>().text = "Player won !";
@@ -94,9 +96,10 @@ public class CombatController : MonoBehaviour
         activeCharacter.GetComponent<Character>().applyBuffs();
         if(activeCharacter.GetComponent<Character>().getCurrentHP() <= 0){
             if(activeCharacter.GetComponent<Character>() is Enemy){
-                killEnemy(activeCharacter);
+                killEnemy(activeCharacter, () => EndTurn());
+            }else{
+                EndTurn();
             }
-            EndTurn();
         }else{
             if(activeCharacter == player){
                 foreach(GameObject enemy in enemies){
@@ -126,9 +129,14 @@ public class CombatController : MonoBehaviour
                 }
             }else{
                 if(play){
+                    PlayAndDoCallback(activeCharacter.GetComponentInChildren<Animator>(),"enemy_attack", null);
                     activeCharacter.GetComponent<Enemy>().useAbility();
+                    PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_hurt", () => {
+                        EndTurn();
+                    });
+                }else{
+                    EndTurn();
                 }
-                EndTurn();
             }
         }
     }
@@ -291,14 +299,22 @@ public class CombatController : MonoBehaviour
     public void useDice(int boardSlotID, GameObject target){
         boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
         discardDiceAndFace(boardSlotID);
-        if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
-            killEnemy(target);
-        }
-        if(enemies.Count == 0){
-            EndCombat();
-        }else if(isBoardEmpty()){
-            EndTurn();
-        }
+        PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_attack",null);
+        PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"enemy_hurt",() => {
+            if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
+                killEnemy(target, () => {
+                    if(enemies.Count == 0){
+                        EndCombat();
+                    }else if(isBoardEmpty()){
+                        EndTurn();
+                    }
+                });
+            }else{
+                if(isBoardEmpty()){
+                    EndTurn();
+                }
+            }
+        });
     }
 
     // ========================= Dice fusion =========================
@@ -346,9 +362,12 @@ public class CombatController : MonoBehaviour
     /// <summary>
     /// Remove an enemy from the combat
     /// </summary>
-    void killEnemy(GameObject enemy){
-        enemies.Remove(enemy);
-        Destroy(enemy);
+    void killEnemy(GameObject enemy, Action callback){
+        PlayAndDoCallback(enemy.GetComponentInChildren<Animator>(),"enemy_die", () => {
+            enemies.Remove(enemy);
+            Destroy(enemy);
+            callback();
+        });
     }
 
     void resetEnemies(){
@@ -356,5 +375,24 @@ public class CombatController : MonoBehaviour
             Destroy(go);
         }
         enemies.Clear();
+    }
+
+    //================== Animation managment =======================
+
+    void PlayAndDoCallback(Animator animator, string animName, Action callback){
+        StartCoroutine(PlayAndWait(animator, animName, callback));
+    }
+
+    System.Collections.IEnumerator PlayAndWait(Animator animator, string animName, Action callback){
+        animator.SetTrigger(animName);
+        while(!animator.GetCurrentAnimatorStateInfo(0).IsName(animName)){
+            yield return null;
+        }
+        while(animator.GetCurrentAnimatorStateInfo(0).IsName(animName)){
+            yield return null;
+        }
+        if(callback != null){
+            callback();
+        }
     }
 }
