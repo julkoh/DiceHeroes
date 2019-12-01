@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public void Play(){
-        SceneManager.LoadScene("CombatScene");
+        SceneManager.LoadScene("MapScene");
     }
 
     public void Exit(){

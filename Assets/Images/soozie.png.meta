@@ -1,0 +1,775 @@
+fileFormatVersion: 2
+guid: 5bed24ea901d7134c87c2b8d1b0c96bf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 512539226196588461
+    second: soozie_0
+  - first:
+      213: 4281100510193277562
+    second: soozie_1
+  - first:
+      213: -8878704545962617572
+    second: soozie_2
+  - first:
+      213: -6922734024817334049
+    second: soozie_3
+  - first:
+      213: 2843719165734494720
+    second: soozie_4
+  - first:
+      213: -4894813152851487997
+    second: soozie_5
+  - first:
+      213: -1655287517766572591
+    second: soozie_6
+  - first:
+      213: 4446507060600916947
+    second: soozie_7
+  - first:
+      213: -4959331748792195492
+    second: soozie_8
+  - first:
+      213: 6219911604763292601
+    second: soozie_9
+  - first:
+      213: -3626963114943451174
+    second: soozie_10
+  - first:
+      213: -3327115751004320348
+    second: soozie_11
+  - first:
+      213: -8090501765321630982
+    second: soozie_12
+  - first:
+      213: -9104665440366495550
+    second: soozie_13
+  - first:
+      213: -3118941348937398698
+    second: soozie_14
+  - first:
+      213: 7555743274693281341
+    second: soozie_15
+  - first:
+      213: 4409038762353746113
+    second: soozie_16
+  - first:
+      213: 6644845394072080320
+    second: soozie_17
+  - first:
+      213: 4523104297233977439
+    second: soozie_18
+  - first:
+      213: -909918616281489833
+    second: soozie_19
+  - first:
+      213: -4179663784525869114
+    second: soozie_20
+  - first:
+      213: 1454616394797741021
+    second: soozie_21
+  - first:
+      213: -1948414520556875545
+    second: soozie_22
+  - first:
+      213: -4528306722904841839
+    second: soozie_23
+  - first:
+      213: 8193139898579936642
+    second: soozie_24
+  - first:
+      213: -8872979174776577257
+    second: soozie_25
+  - first:
+      213: 7329874157170350949
+    second: soozie_26
+  - first:
+      213: 4132888687141519952
+    second: soozie_27
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: soozie_0
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 340
+        width: 40
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ece6fffe9ae204c810081c5f9afec6
+      internalID: 512539226196588461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 340
+        width: 42
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77d79cf56381854abdb3bc1449b685a
+      internalID: 4281100510193277562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_2
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 340
+        width: 43
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3659b2c3939b61c4c87e2cf351150a50
+      internalID: -8878704545962617572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_3
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 340
+        width: 37
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c354cb3be78ec4409b4718f04679875
+      internalID: -6922734024817334049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_4
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 340
+        width: 38
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747d40835bc49444b8fa78fe9f2633d8
+      internalID: 2843719165734494720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_5
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 340
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cf9c57aef8ee14f9d3571d6a8d3c49
+      internalID: -4894813152851487997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_6
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 340
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d339061de56df784a85d30e013115a91
+      internalID: -1655287517766572591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_7
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 256
+        width: 44
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc34c94ae2604ba4980afc41e62722a1
+      internalID: 4446507060600916947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_8
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 256
+        width: 39
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e257c017e27caeb49b17566e3c61c474
+      internalID: -4959331748792195492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_9
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 256
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e912c5803982724d8218795c9a08221
+      internalID: 6219911604763292601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_10
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 190
+        width: 80
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77af660e856d7294986d4c7c962c52e8
+      internalID: -3626963114943451174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_11
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 190
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff9b479a47200d42b6eddd9b96905c5
+      internalID: -3327115751004320348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_12
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 164
+        width: 29
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc70cc3d79c8664a9d7e98e12661663
+      internalID: -8090501765321630982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_13
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 164
+        width: 33
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1f2fc16c5214b418f9da7425d4bb96
+      internalID: -9104665440366495550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 164
+        width: 40
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ebd1d1eab2ca34e8502d0f04726031
+      internalID: -3118941348937398698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_15
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 164
+        width: 52
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e40011867e237943a76219fc8832674
+      internalID: 7555743274693281341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_16
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 164
+        width: 35
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f012f3e7ae4fae04da5539c670ba779a
+      internalID: 4409038762353746113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_17
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 164
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb263084b233c14581cdd54022f2f03
+      internalID: 6644845394072080320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_18
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 83
+        width: 33
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67966a68295da6f49865d9e198de8c92
+      internalID: 4523104297233977439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_19
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 82
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cef9397b2176345880265d86b20e74
+      internalID: -909918616281489833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_20
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 87
+        width: 76
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95405c4512985034daee4df377e2095e
+      internalID: -4179663784525869114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_21
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 87
+        width: 88
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec252aa9854ed54cadc18dce7d26109
+      internalID: 1454616394797741021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_22
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 98
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e59c3b557e95a747a3302badb4d0d74
+      internalID: -1948414520556875545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_23
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 90
+        width: 39
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8fb52c9ff52771409250fe863b2e0aa
+      internalID: -4528306722904841839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_24
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 87
+        width: 39
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352f8a53da310044b8e390ce9aaf7c9c
+      internalID: 8193139898579936642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_25
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 83
+        width: 43
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dddf568eaff1aa9418b5f19a21fad5b9
+      internalID: -8872979174776577257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_26
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 2
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa6a0f353f9ec164aa7a587a5a667207
+      internalID: 7329874157170350949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soozie_27
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 2
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a0e2a3028569f4387572f80de7cd1f
+      internalID: 4132888687141519952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
