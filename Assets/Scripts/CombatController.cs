@@ -128,7 +128,7 @@ public class CombatController : MonoBehaviour
                 }
             }else{
                 if(play){
-                    PlayAndDoCallback(activeCharacter.GetComponentInChildren<Animator>(),"enemy_attack", null);
+                    PlayAndDoCallback(activeCharacter.GetComponentInChildren<Animator>(),"attack", null);
                     activeCharacter.GetComponent<Enemy>().useAbility();
                     PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_hurt", () => {
                         EndTurn();
@@ -299,7 +299,7 @@ public class CombatController : MonoBehaviour
         boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
         discardDiceAndFace(boardSlotID);
         PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_attack",null);
-        PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"enemy_hurt",() => {
+        PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"hurt",() => {
             if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
                 killEnemy(target, () => {
                     if(enemies.Count == 0){
@@ -362,7 +362,7 @@ public class CombatController : MonoBehaviour
     /// Remove an enemy from the combat
     /// </summary>
     void killEnemy(GameObject enemy, Action callback){
-        PlayAndDoCallback(enemy.GetComponentInChildren<Animator>(),"enemy_die", () => {
+        PlayAndDoCallback(enemy.GetComponentInChildren<Animator>(),"die", () => {
             enemies.Remove(enemy);
             Destroy(enemy);
             callback();

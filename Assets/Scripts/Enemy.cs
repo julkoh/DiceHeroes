@@ -95,38 +95,46 @@ public class Enemy : Character
 
     public void setType(EnemyType t){
         type = t;
+        string controllerName = "";
         switch(type){
             case EnemyType.BANDIT :
+                controllerName = "enemy";
                 addAbility(new DiceFace(DiceFaceColor.EARTH,1));
                 addAbility(new DiceFace(DiceFaceColor.EARTH,2));
                 addAbility(new DiceFace(DiceFaceColor.ROCK,1));
                 break;
             case EnemyType.BRIGAND :
+                controllerName = "fog";
                 addAbility(new DiceFace(DiceFaceColor.WATER,1));
                 addAbility(new DiceFace(DiceFaceColor.WATER,2));
                 addAbility(new DiceFace(DiceFaceColor.ICE,1));
                 break;
             case EnemyType.BRUTE :
+                controllerName = "galsia";
                 addAbility(new DiceFace(DiceFaceColor.FIRE,1));
                 addAbility(new DiceFace(DiceFaceColor.FIRE,2));
                 addAbility(new DiceFace(DiceFaceColor.LAVA,1));
                 break;
             case EnemyType.DEALER :
+                controllerName = "hakuyo";
                 addAbility(new DiceFace(DiceFaceColor.FIRE,1));
                 addAbility(new DiceFace(DiceFaceColor.WATER,1));
                 addAbility(new DiceFace(DiceFaceColor.POISON,2));
                 break;
             case EnemyType.JUNKIE :
+                controllerName = "raven";
                 addAbility(new DiceFace(DiceFaceColor.EARTH,1));
                 addAbility(new DiceFace(DiceFaceColor.WATER,1));
                 addAbility(new DiceFace(DiceFaceColor.RADIATION,2));
                 break;
             case EnemyType.RACKETEER :
+                controllerName = "soozie";
                 addAbility(new DiceFace(DiceFaceColor.FIRE,1));
                 addAbility(new DiceFace(DiceFaceColor.EARTH,1));
                 addAbility(new DiceFace(DiceFaceColor.PHYSICAL,2));
                 break;
         }
+        gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/"+controllerName+".controller");
     }
 
     void OnTriggerEnter2D(Collider2D other){
