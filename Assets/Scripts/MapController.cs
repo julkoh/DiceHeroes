@@ -20,6 +20,17 @@ public class MapController : MonoBehaviour
             if(t.position==GameController.position)
             {
                 GameController.currentTile = t;
+                switch(t.tiletype)
+                {
+                    case Tiletype.GANG1:
+                        GameController.karma++;
+                        GameObject.Find("Karma").GetComponent<Text>().color+=new Color(0,10,0);
+                    break;
+                    case Tiletype.GANG2:
+                        GameController.karma--;
+                        GameObject.Find("Karma").GetComponent<Text>().color+=new Color(19,0,25);
+                    break;
+                }
                 
             }
         }

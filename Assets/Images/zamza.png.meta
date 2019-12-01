@@ -1,0 +1,1375 @@
+fileFormatVersion: 2
+guid: 19dea2c9bae910a4aad061b92707a6f5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6575173239861606894
+    second: zamza_0
+  - first:
+      213: -783006706386179369
+    second: zamza_1
+  - first:
+      213: 8943956709195168780
+    second: zamza_2
+  - first:
+      213: 7752540702811752274
+    second: zamza_3
+  - first:
+      213: -185949897275407855
+    second: zamza_4
+  - first:
+      213: 2372825360595202646
+    second: zamza_5
+  - first:
+      213: 7603482225712986605
+    second: zamza_6
+  - first:
+      213: -6686744310202394191
+    second: zamza_7
+  - first:
+      213: -911501427295857647
+    second: zamza_8
+  - first:
+      213: -6615956327494098050
+    second: zamza_9
+  - first:
+      213: -8045056432330367656
+    second: zamza_10
+  - first:
+      213: -1499991542823548091
+    second: zamza_11
+  - first:
+      213: -2925776761262177488
+    second: zamza_12
+  - first:
+      213: -9044688234218667222
+    second: zamza_13
+  - first:
+      213: -8294467521549897116
+    second: zamza_14
+  - first:
+      213: -6788362187111008780
+    second: zamza_15
+  - first:
+      213: 5024937274043582488
+    second: zamza_16
+  - first:
+      213: 6953349972545933673
+    second: zamza_17
+  - first:
+      213: -7027674024398869351
+    second: zamza_18
+  - first:
+      213: 8327460506940447687
+    second: zamza_19
+  - first:
+      213: -1701043417787201483
+    second: zamza_20
+  - first:
+      213: 8984880269035322467
+    second: zamza_21
+  - first:
+      213: 2794500674676204173
+    second: zamza_22
+  - first:
+      213: 3860823271566631154
+    second: zamza_23
+  - first:
+      213: 2489190821160875875
+    second: zamza_25
+  - first:
+      213: 5912682791871085068
+    second: zamza_26
+  - first:
+      213: -8942019176741813627
+    second: zamza_27
+  - first:
+      213: 5753125894889947405
+    second: zamza_28
+  - first:
+      213: -4988754607062039419
+    second: zamza_29
+  - first:
+      213: -172715826901946038
+    second: zamza_30
+  - first:
+      213: -9059741883973922350
+    second: zamza_31
+  - first:
+      213: 1436575066664877173
+    second: zamza_32
+  - first:
+      213: -449002912837841206
+    second: zamza_33
+  - first:
+      213: 6910100741821129652
+    second: zamza_34
+  - first:
+      213: -3391748758266688300
+    second: zamza_35
+  - first:
+      213: -5924214915468013266
+    second: zamza_36
+  - first:
+      213: -5866517277435580208
+    second: zamza_37
+  - first:
+      213: 5683157792846202983
+    second: zamza_38
+  - first:
+      213: 810058579600472125
+    second: zamza_39
+  - first:
+      213: -5163474580944545538
+    second: zamza_40
+  - first:
+      213: 3810451368674315949
+    second: zamza_41
+  - first:
+      213: 3329131371253518537
+    second: zamza_42
+  - first:
+      213: -671719582685081921
+    second: zamza_43
+  - first:
+      213: -794544737768886399
+    second: zamza_44
+  - first:
+      213: 27479969246118905
+    second: zamza_45
+  - first:
+      213: -7380029192202676856
+    second: zamza_46
+  - first:
+      213: 1209096030063733422
+    second: zamza_47
+  - first:
+      213: 4866517465639230465
+    second: zamza_48
+  - first:
+      213: 8373986677670094845
+    second: zamza_49
+  - first:
+      213: 8843725146610466889
+    second: zamza_50
+  - first:
+      213: -2523423515111815764
+    second: zamza_52
+  - first:
+      213: -5693845632019015785
+    second: zamza_55
+  - first:
+      213: 6304285953471395648
+    second: zamza_56
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zamza_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 390
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be96b72393f1d764fbd290f8ca7ac3df
+      internalID: 6575173239861606894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 390
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad02775c8154864eb7240c4e8bf802b
+      internalID: -783006706386179369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 390
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4b3e929a0c4b74c895318b0270cccd
+      internalID: 8943956709195168780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_3
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 390
+        width: 56
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28db67ef347d5fd45b9b6c88eb850b55
+      internalID: 7752540702811752274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_4
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 390
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd4734c0e5fc054a9f442dbc30b8ec0
+      internalID: -185949897275407855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_5
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 392
+        width: 60
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702baf3850794844380d2ff0d88495c3
+      internalID: 2372825360595202646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 390
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7aa16b2cd9269e4bba9f1507618e17f
+      internalID: 7603482225712986605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_7
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 390
+        width: 53
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5333b1446d3b94cb1004af8f1b11ff
+      internalID: -6686744310202394191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_8
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 390
+        width: 54
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877ba8a746a073d4996cbda4c8de01f1
+      internalID: -911501427295857647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_9
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 393
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcae5a39979281479c88960b2c8c999
+      internalID: -6615956327494098050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_10
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 390
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e76f7f052129e42b584499819950a4
+      internalID: -8045056432330367656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_11
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 319
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72062e40d696e754cbe43b71dd8ea041
+      internalID: -1499991542823548091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_12
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 319
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1840f22e95486454bb9754a48c80a59b
+      internalID: -2925776761262177488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_13
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 319
+        width: 27
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585e99fb101a035489b8b6e4275e30eb
+      internalID: -9044688234218667222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_14
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 319
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640f8a27d3f4baf4dbb8a5b5d7d515ad
+      internalID: -8294467521549897116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_15
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 319
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb20e3f60e747148b076f98390014f5
+      internalID: -6788362187111008780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_16
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 319
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ff9447b7c9a644a82571170acc9d7d
+      internalID: 5024937274043582488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_17
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 319
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96fc6a5c1aab304b9481a3f72298bfe
+      internalID: 6953349972545933673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_18
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 319
+        width: 45
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ee09dd03984dc43926c76e01ef5cdd
+      internalID: -7027674024398869351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_19
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 319
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b77483fa7122b943bec98798fb43f09
+      internalID: 8327460506940447687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_20
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 319
+        width: 27
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c89fb964a0e9d242896ee3b53709489
+      internalID: -1701043417787201483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_21
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 319
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c2ffc58bce3be449556063ad28daf7
+      internalID: 8984880269035322467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_22
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 253
+        width: 55
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3475d1bd4dbfb4988ec1a8aab725b5
+      internalID: 2794500674676204173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_23
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 253
+        width: 73
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0283106552c9d4f439e392b74b66da24
+      internalID: 3860823271566631154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_25
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 253
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de57fdbae4ee854882f41b00046ec78
+      internalID: 2489190821160875875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_26
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 253
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53282cdc06cab845b1d686db457a135
+      internalID: 5912682791871085068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_27
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 253
+        width: 76
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023435384dba16a408c51e82162af42c
+      internalID: -8942019176741813627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_28
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 268
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad0549592a9066408a5b83968d15314
+      internalID: 5753125894889947405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_29
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 253
+        width: 36
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e950d776e6a8744a93b932828fa1b4
+      internalID: -4988754607062039419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_30
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 159
+        width: 57
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b234f33e558fd49ab3e02f032ceba8
+      internalID: -172715826901946038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_31
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 159
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0af555ca03bbb843ad19c24c03796e8
+      internalID: -9059741883973922350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_32
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 159
+        width: 55
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd24e710bf815dc4ab3569b6461ce9d7
+      internalID: 1436575066664877173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_33
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 159
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5016bf595f96342a824364f3addad3
+      internalID: -449002912837841206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_34
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 159
+        width: 38
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e982e900e2ccc54fa221b28034b26ff
+      internalID: 6910100741821129652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_35
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 159
+        width: 34
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c8e216149d4b93418e4cb7759e88884
+      internalID: -3391748758266688300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_36
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 159
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b623d9da7afcb439022a447a80254c
+      internalID: -5924214915468013266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_37
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 159
+        width: 37
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860cbeb750f84d24a925714b74e39b3e
+      internalID: -5866517277435580208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_38
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 159
+        width: 31
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bdda39178e99714788169e37c2bfafd
+      internalID: 5683157792846202983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_39
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 71
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd387d327ba326d428bbdd314b0bf14b
+      internalID: 810058579600472125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_40
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 71
+        width: 53
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11edaa325adb33c4fa45eaa0c1c20e88
+      internalID: -5163474580944545538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_41
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 71
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c754ee1f99890ed46ad3c6cef5961afe
+      internalID: 3810451368674315949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_42
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 71
+        width: 51
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47afbc86aa318f4a9708856f1f1bd53
+      internalID: 3329131371253518537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_43
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 71
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ac3c6eb3e65af4f9e000c3f96c67bc
+      internalID: -671719582685081921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_44
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 71
+        width: 41
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffcacc58bf73d5f4090ad79cd926c7a9
+      internalID: -794544737768886399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_45
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 71
+        width: 60
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ef74be0e1cb2c44a6913e9b201bbf7
+      internalID: 27479969246118905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_46
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 71
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c791fe09104ea648a24e8b88394ee3c
+      internalID: -7380029192202676856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_47
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 71
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d83b1aa9b851fd4dbebef521ff2c447
+      internalID: 1209096030063733422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_48
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a6f5c55fe0f9848969de24ee87cf26
+      internalID: 4866517465639230465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_49
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 5
+        width: 47
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47725c7603dbc146a26465185cfaef0
+      internalID: 8373986677670094845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_50
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 5
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6847be807cf3e214795984102cc2074e
+      internalID: 8843725146610466889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_52
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 5
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d0c6751b9c4d84eaa8d087fb05fcd5
+      internalID: -2523423515111815764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_55
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 5
+        width: 75
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602d35c76aef22c4cb581a824c3ebd28
+      internalID: -5693845632019015785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zamza_56
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 5
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8546be686a9ce4e86ddd108d23eb14
+      internalID: 6304285953471395648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
