@@ -1,6 +1,7 @@
 ﻿using System; 
-using System.Collections.Generic; 
-using UnityEditor;
+using System.Collections.Generic;
+using System.Threading;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -35,8 +36,9 @@ public class CombatController : MonoBehaviour
         usedDices = new List<Dice>();
         enemies  = new List<GameObject>();
         for(int i = 0; i < GameController.getEnemyAmount(); i++){
-            GameObject enemyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemy.prefab");
-            enemies.Add(Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this));
+            GameObject enemyPrefab = Resources.Load<GameObject>("Prefabs/Enemy");
+            GameObject enemy = Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this);
+            enemies.Add(enemy);
         }
         activeCharacterID = -1;
         activeCharacter = player.gameObject;
@@ -55,21 +57,20 @@ public class CombatController : MonoBehaviour
         /*
         show endCombat screen here
         */
-        
-        emptyBoard();
-        recoverDices();
-        GameController.setPlayer(player.GetComponent<Player>());
-        GameController.clearEnemytypes();
-        GameController.setEnemyAmount(0);
-        SceneManager.LoadScene("CustomizationScene");
-        /*GameObject vt = GameObject.Find("VictoryText");
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
-            vt.GetComponent<Text>().text = "Enemies won !";
+            PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_die", null);
+            GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
+        }else if(enemies.Count == 0){
+            //GameObject.Find("VictoryText").GetComponent<Text>().text = "Player won !";
+            emptyBoard();
+            recoverDices();
+            GameController.setPlayer(player.GetComponent<Player>());
+            GameController.clearEnemytypes();
+            GameController.setEnemyAmount(0);
+            SceneManager.UnloadSceneAsync("CombatScene");
+            SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
         }
-        if(enemies.Count == 0){
-            vt.GetComponent<Text>().text = "Player won !";
-        }
-        replayButton.SetActive(true);*/
+        //replayButton.SetActive(true);
     }
 
     public void restartCombat(){
@@ -95,9 +96,10 @@ public class CombatController : MonoBehaviour
         activeCharacter.GetComponent<Character>().applyBuffs();
         if(activeCharacter.GetComponent<Character>().getCurrentHP() <= 0){
             if(activeCharacter.GetComponent<Character>() is Enemy){
-                killEnemy(activeCharacter);
+                killEnemy(activeCharacter, () => EndTurn());
+            }else{
+                EndTurn();
             }
-            EndTurn();
         }else{
             if(activeCharacter == player){
                 foreach(GameObject enemy in enemies){
@@ -128,8 +130,12 @@ public class CombatController : MonoBehaviour
             }else{
                 if(play){
                     activeCharacter.GetComponent<Enemy>().useAbility();
+                    PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_hurt", () => {
+                        EndTurn();
+                    });
+                }else{
+                    EndTurn();
                 }
-                EndTurn();
             }
         }
     }
@@ -291,15 +297,24 @@ public class CombatController : MonoBehaviour
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
         boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
+        player.GetComponentInChildren<Animator>().SetTrigger("player_attack");
+        target.GetComponentInChildren<Animator>().gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger(boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().getFaceColor().ToString().ToLower());
         discardDiceAndFace(boardSlotID);
-        if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
-            killEnemy(target);
-        }
-        if(enemies.Count == 0){
-            EndCombat();
-        }else if(isBoardEmpty()){
-            EndTurn();
-        }
+        PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"hurt",() => {
+            if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
+                killEnemy(target, () => {
+                    if(enemies.Count == 0){
+                        EndCombat();
+                    }else if(isBoardEmpty()){
+                        EndTurn();
+                    }
+                });
+            }else{
+                if(isBoardEmpty()){
+                    EndTurn();
+                }
+            }
+        });
     }
 
     // ========================= Dice fusion =========================
@@ -347,9 +362,12 @@ public class CombatController : MonoBehaviour
     /// <summary>
     /// Remove an enemy from the combat
     /// </summary>
-    void killEnemy(GameObject enemy){
-        enemies.Remove(enemy);
-        Destroy(enemy);
+    void killEnemy(GameObject enemy, Action callback){
+        PlayAndDoCallback(enemy.GetComponentInChildren<Animator>(),"die", () => {
+            enemies.Remove(enemy);
+            Destroy(enemy);
+            callback();
+        });
     }
 
     void resetEnemies(){
@@ -357,5 +375,24 @@ public class CombatController : MonoBehaviour
             Destroy(go);
         }
         enemies.Clear();
+    }
+
+    //================== Animation managment =======================
+
+    void PlayAndDoCallback(Animator animator, string animName, Action callback){
+        StartCoroutine(PlayAndWait(animator, animName, callback));
+    }
+
+    public static System.Collections.IEnumerator PlayAndWait(Animator animator, string animName, Action callback){
+        animator.SetTrigger(animName);
+        while(!animator.GetCurrentAnimatorStateInfo(0).IsName(animName)){
+            yield return null;
+        }
+        while(animator.GetCurrentAnimatorStateInfo(0).IsName(animName)){
+            yield return null;
+        }
+        if(callback != null){
+            callback();
+        }
     }
 }

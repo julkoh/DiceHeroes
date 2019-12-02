@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: 6f44f92727df600468a22338bea71a08
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4999832985054093472
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_0
+  - first:
+      213: -4288372979532488478
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_1
+  - first:
+      213: -9222177925446724475
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_2
+  - first:
+      213: 262507372127882085
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_3
+  - first:
+      213: -2540909594616607056
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_4
+  - first:
+      213: -1085785572114864382
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_5
+  - first:
+      213: -8067015176589412006
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_6
+  - first:
+      213: 6460072517833175690
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_7
+  - first:
+      213: 2490800270255370663
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_8
+  - first:
+      213: -1638749151337987182
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_9
+  - first:
+      213: -7123839176448142822
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_10
+  - first:
+      213: 5608656173879877166
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_11
+  - first:
+      213: -8139737869525574982
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_12
+  - first:
+      213: -660040298404978012
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_13
+  - first:
+      213: -7487039872964528888
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_14
+  - first:
+      213: -3890903139151011007
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_16
+  - first:
+      213: 5417667195811339925
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_17
+  - first:
+      213: -6200468570587526238
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_18
+  - first:
+      213: -3908548769211530837
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_19
+  - first:
+      213: -7418827819427693842
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_20
+  - first:
+      213: -898340577558149450
+    second: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_21
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 396
+        width: 56
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca538f13e9efcf49ba7f523204e1b11
+      internalID: -4999832985054093472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 396
+        width: 55
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2691bb1f9e21f4b8a28da792ca4864
+      internalID: -4288372979532488478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_2
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 396
+        width: 55
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0070e0be9ea5e43bbf3fbd73200c49
+      internalID: -9222177925446724475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_3
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 396
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4e47a043d5fd743b32f162f4a22799
+      internalID: 262507372127882085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_4
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 396
+        width: 54
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0cadc56d3c08fe44ae2f6e5f96b1094
+      internalID: -2540909594616607056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_5
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 416
+        width: 85
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4bac2e3887070469e9157b13035241
+      internalID: -1085785572114864382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_6
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 396
+        width: 55
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9c53ff145fab14b9ca147c110a6d85
+      internalID: -8067015176589412006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_7
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 396
+        width: 78
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71ad0977005ba5640a7fc58d7079fb1a
+      internalID: 6460072517833175690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_8
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 300
+        width: 46
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd8000bc5b0f72448eda58588bb6785
+      internalID: 2490800270255370663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 300
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51ffae73e4394c4fb1eee852d6c670b
+      internalID: -1638749151337987182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 300
+        width: 54
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae106635419acc34eaa28200217d4560
+      internalID: -7123839176448142822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_11
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 300
+        width: 66
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b6fa107e386a042ba7cf7eec3d5f35
+      internalID: 5608656173879877166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_12
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 300
+        width: 91
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60cf0e10c369454687c05581253d27d
+      internalID: -8139737869525574982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_13
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 300
+        width: 66
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b660fe702fee40c4dbfcae7fe0521f9d
+      internalID: -660040298404978012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_14
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 300
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5b50b38c046484a980148da37091d7
+      internalID: -7487039872964528888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_16
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 204
+        width: 55
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4aefec8d38080e41a1f15d060bca2aa
+      internalID: -3890903139151011007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_17
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 204
+        width: 72
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71960dc57ac6a9d42987eb8921648ce8
+      internalID: 5417667195811339925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_18
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 108
+        width: 80
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639fadcd4c1920a4a92202d44cee906d
+      internalID: -6200468570587526238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_19
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 12
+        width: 54
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11e9951d71e3d54e884188a0812e306
+      internalID: -3908548769211530837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_20
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 12
+        width: 104
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5cdcb91dc2e7664ba662d3c1f37b765
+      internalID: -7418827819427693842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genesis 32X SCD - Streets of Rage 2 - Hakuyo_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 12
+        width: 115
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1cbe183ea2c73b41bcae4876e846cc9
+      internalID: -898340577558149450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

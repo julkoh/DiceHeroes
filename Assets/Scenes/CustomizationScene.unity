@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 843764216}
   - component: {fileID: 843764215}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: CameraCustomization
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843764214}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &843764216
 Camera:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

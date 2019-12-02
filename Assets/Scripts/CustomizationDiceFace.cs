@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +14,7 @@ public class CustomizationDiceFace : MonoBehaviour
         go.transform.SetParent(parent, false);
         go.GetComponent<CustomizationDiceFace>().setDiceFace(df);
         go.GetComponent<CustomizationDiceFace>().setCustomizationController(cc);
-        go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+df.getFaceColor().ToString().ToLower()+".png");
+        go.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+df.getFaceColor().ToString().ToLower());
         go.GetComponentInChildren<Button>().onClick.AddListener(()=>{
             cc.RemoveDiceFace(go);
         });

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -96,7 +96,7 @@ public class CustomizationController : MonoBehaviour
         source.GetComponent<NewDiceFace>().enabled = false;
         showConfirmationBox(() => {
             target.GetComponent<CustomizationDiceFace>().setDiceFace(source.GetComponent<NewDiceFace>().getDiceFace());
-            target.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+target.GetComponent<CustomizationDiceFace>().getDiceFace().getFaceColor().ToString().ToLower()+".png");
+            target.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+target.GetComponent<CustomizationDiceFace>().getDiceFace().getFaceColor().ToString().ToLower());
             FinishCustomization();
             //DrawNewFace();
         });
@@ -121,7 +121,8 @@ public class CustomizationController : MonoBehaviour
         }
         saveChangestoPlayer();
         GameController.setPlayer(player);
-        SceneManager.LoadScene("MapScene");
+        GameController.mapScene=true;
+        SceneManager.UnloadSceneAsync("CustomizationScene");   
     }
 
     void saveChangestoController(){

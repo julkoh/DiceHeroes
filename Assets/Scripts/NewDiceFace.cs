@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEditor;
+
 
 public class NewDiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -17,7 +17,7 @@ public class NewDiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
         go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
         go.GetComponent<NewDiceFace>().setDiceFace(df);
         go.GetComponent<NewDiceFace>().setBasePosition(go.transform.position);
-        go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+df.getFaceColor().ToString().ToLower()+".png");
+        go.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+df.getFaceColor().ToString().ToLower());
         return go;
     }
 
