@@ -102,7 +102,8 @@ public class ShopControlScript : MonoBehaviour
     {
         GameController.getPlayer().setGold(moneyAmount);
         StartCoroutine(CombatController.PlayAndWait(GameObject.Find("ShopkeeperSprite").GetComponent<Animator>(),"greeting",() => {
-            SceneManager.LoadScene(nextScene);
+            GameController.mapScene = true;
+            SceneManager.UnloadSceneAsync("ShopScene");
         }));
     }
 }

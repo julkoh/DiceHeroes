@@ -42,7 +42,17 @@ public class MapController : MonoBehaviour
             }
         }
         canvasMap.SetActive(false);
-        SceneManager.LoadScene("CombatScene",LoadSceneMode.Additive);
+        switch(GameController.currentTile.tiletype){
+            case Tiletype.GANG1:
+            case Tiletype.GANG2:
+            case Tiletype.BOSS:
+            SceneManager.LoadScene("CombatScene",LoadSceneMode.Additive);
+            break;
+            case Tiletype.SHOP:
+            SceneManager.LoadScene("ShopScene",LoadSceneMode.Additive);
+            break;
+        }
+        
             
     }
     /*public Player GetPlayer(){
@@ -166,8 +176,6 @@ public class MapController : MonoBehaviour
                 lr.material.color = new Color(0,255,0,1f);
             }
         }
-        
-        
     }
 
 }
