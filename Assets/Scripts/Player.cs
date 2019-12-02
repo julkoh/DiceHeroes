@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -22,6 +23,8 @@ public class Player : Character
         for (int i = 0; i < diceAmount; i++){
             addDice(new Dice(4));
         }
+        addItem(new Item());
+        addItem(new Item());
     }
 
     void Awake(){
@@ -81,5 +84,25 @@ public class Player : Character
 
     public void setMaxDicesOnBoard(int val){
         maxDicesOnBoard = val;
+    }
+
+    public void showItems(){
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/Item");
+        Dictionary<System.Type,int> displayItems = new Dictionary<System.Type, int>();
+        foreach(Item item in items){
+            if(displayItems.ContainsKey(item.getItemEffect().GetType())){
+                displayItems[item.getItemEffect().GetType()] += item.getItemEffect().getValue();
+            }else{
+                displayItems.Add(item.getItemEffect().GetType(), item.getItemEffect().getValue());
+            }
+        }
+        List<System.Type> itemTypes = new List<System.Type>(displayItems.Keys);
+        for(int i = 0; i < itemTypes.Count; i++){
+            GameObject go = Instantiate(prefab, new Vector3(prefab.transform.position.x + 50*i, prefab.transform.position.y),Quaternion.identity);
+            go.transform.SetParent(gameObject.transform.Find("Items"),false);
+            go.GetComponentInChildren<Image>().sprite = items.Find(item => item.getItemEffect().GetType() == itemTypes[i]).getIcon();
+            go.GetComponentInChildren<Text>().text = ""+displayItems[itemTypes[i]];
+        }
+        
     }
 }

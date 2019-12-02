@@ -42,6 +42,12 @@ public class Damage : Effect
 
     public override void apply(Character source, Character target){
         int attackValue = getValue();
+        if(source is Player){
+            Player player = (Player)source;
+            foreach(Item item in player.getItems().FindAll(i => i.getItemEffect().getEffectTypeToAffect() == this.GetType())){
+                attackValue = item.getItemEffect().changeEffectValue(attackValue);
+            }
+        }
         if(target.getArmor() > 0){
             int armorLeft = target.getArmor() > attackValue ? target.getArmor() - attackValue : 0;
             attackValue -= target.getArmor();
@@ -62,7 +68,14 @@ public class Shield : Effect
     }
 
     public override void apply(Character source, Character target){
-        source.setArmor(source.getArmor() + getValue());
+        int val = getValue();
+        if(source is Player){
+            Player player = (Player)source;
+            foreach(Item item in player.getItems().FindAll(i => i.getItemEffect().getEffectTypeToAffect() == this.GetType())){
+                val = item.getItemEffect().changeEffectValue(val);
+            }
+        }
+        source.setArmor(source.getArmor() + val);
         source.refreshHUD();
     }
 }

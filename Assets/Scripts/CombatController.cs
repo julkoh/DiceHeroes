@@ -30,6 +30,7 @@ public class CombatController : MonoBehaviour
         player = GameObject.Find("Player");
         player.AddComponent<Player>();
         player.GetComponent<Player>().refreshHUD();
+        player.GetComponent<Player>().showItems();
         boardDices = new Dice[player.GetComponent<Player>().getMaxDicesOnBoard()];
         boardDiceFaces = new GameObject[player.GetComponent<Player>().getMaxDicesOnBoard()];
         diceBag = player.GetComponent<Player>().getDices();

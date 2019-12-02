@@ -23,17 +23,24 @@ public class ShopControlScript : MonoBehaviour
 
     private string nextScene;
     private DiceFace diceSide;
+    private int diceSideCost;
     private int diceFacesAmount;
+    private Item item;
 
     // Start is called before the first frame update
     void Start()
     {
         moneyAmount = GameController.getPlayer().getGold();
         nextScene = "MapScene";
-        diceSide = new DiceFace();
+        diceSide = new DiceFace((DiceFaceColor)Random.Range(0,System.Enum.GetNames(typeof(DiceFaceColor)).Length),1);
         GameObject.Find("DiceSide").GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+diceSide.getFaceColor().ToString().ToLower());
+        diceSideCost = (int)diceSide.getFaceColor() > 2 ? ((int)diceSide.getFaceColor() > 3 ? 5 : 1) : 2;
+        GameObject.Find("DiceSidePrice").GetComponent<Text>().text = diceSideCost+" gold";
         diceFacesAmount = Random.Range(4,9);
         GameObject.Find("DiceFacesAmount").GetComponent<Text>().text = ""+diceFacesAmount;
+        item = new Item();
+        GameObject.Find("BonusItem").GetComponent<Image>().sprite = item.getIcon();
+        GameObject.Find("BonusItemPrice").GetComponent<Text>().text = item.getItemCost()+" gold";
     }
 
     // Update is called once per frame
@@ -73,7 +80,7 @@ public class ShopControlScript : MonoBehaviour
     public void buyDiceSide()
     {
         GameObject.Find("ShopkeeperSprite").GetComponent<Animator>().SetTrigger("selling");
-        moneyAmount -= 5;
+        moneyAmount -= diceSideCost;
         PlayerPrefs.SetInt("isDiceSideSold", 1);
         diceSidePrice.text = "Sold !";
         buyDiceSideButton.gameObject.SetActive(false);
@@ -84,10 +91,11 @@ public class ShopControlScript : MonoBehaviour
     public void buyBonusItem()
     {
         GameObject.Find("ShopkeeperSprite").GetComponent<Animator>().SetTrigger("selling");
-        moneyAmount -= 2;
+        moneyAmount -= item.getItemCost();
         PlayerPrefs.SetInt("isBonusItemSold", 1);
         bonusItemPrice.text = "Sold !";
         buyBonusItemButton.gameObject.SetActive(false);
+        GameController.getPlayer().addItem(item);
     }
 
     public void exitShop()

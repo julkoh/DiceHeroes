@@ -13,7 +13,6 @@ public static class GameController
         EnemyType.DEALER,
         EnemyType.JUNKIE,
         EnemyType.RACKETEER
-
     };
     private static int enemyAmount = 1;
     public static List<Tile> tiles = new List<Tile>();
