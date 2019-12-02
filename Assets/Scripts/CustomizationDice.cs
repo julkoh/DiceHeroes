@@ -11,7 +11,7 @@ public class CustomizationDice : MonoBehaviour
 
     public static GameObject Create(Dice d, GameObject dicePrefab, Vector3 pos, CustomizationController cc){
         GameObject go = Instantiate(dicePrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+        go.transform.SetParent(GameObject.Find("CanvasCustomization").GetComponent<RectTransform>().transform, false);
         go.GetComponent<CustomizationDice>().setDice(d);
         go.GetComponent<CustomizationDice>().setCustomizationController(cc);
         go.GetComponentInChildren<Button>().onClick.AddListener(()=>{

@@ -67,6 +67,7 @@ public class CombatController : MonoBehaviour
             GameController.setPlayer(player.GetComponent<Player>());
             GameController.clearEnemytypes();
             GameController.setEnemyAmount(0);
+            GameController.setNextDiceFaceCustomization(new DiceFace());
             SceneManager.UnloadSceneAsync("CombatScene");
             SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
         }
@@ -363,6 +364,7 @@ public class CombatController : MonoBehaviour
     /// Remove an enemy from the combat
     /// </summary>
     void killEnemy(GameObject enemy, Action callback){
+        player.GetComponent<Player>().setGold(player.GetComponent<Player>().getGold()+UnityEngine.Random.Range(1,11));
         PlayAndDoCallback(enemy.GetComponentInChildren<Animator>(),"die", () => {
             enemies.Remove(enemy);
             Destroy(enemy);

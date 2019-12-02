@@ -14,7 +14,7 @@ public class NewDiceFace : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public static GameObject Create(DiceFace df, GameObject newDiceFacePrefab, Vector3 pos){
         GameObject go = Instantiate(newDiceFacePrefab, pos, Quaternion.identity);
-        go.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>().transform, false);
+        go.transform.SetParent(GameObject.Find("CanvasCustomization").GetComponent<RectTransform>().transform, false);
         go.GetComponent<NewDiceFace>().setDiceFace(df);
         go.GetComponent<NewDiceFace>().setBasePosition(go.transform.position);
         go.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+df.getFaceColor().ToString().ToLower());

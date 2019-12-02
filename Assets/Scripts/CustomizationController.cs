@@ -15,11 +15,6 @@ public class CustomizationController : MonoBehaviour
     public GameObject newDiceFacePrefab;
     private List<GameObject> displayedDices;
     private List<List<GameObject>> displayedDiceFaces;
-    private ModificationType? modificationType;
-
-    private enum ModificationType {
-        ADD, REMOVE, SWAP
-    }
 
     // ========================= Display Management =========================
 
@@ -27,7 +22,6 @@ public class CustomizationController : MonoBehaviour
     /// Sets up the combat environment
     /// </summary>
     void Start(){
-        modificationType = null;
         player = GameController.getPlayer();
         diceBag = player.getDices();
         displayedDices = new List<GameObject>();
@@ -53,7 +47,7 @@ public class CustomizationController : MonoBehaviour
     }
 
     public void DrawNewFace(){
-        NewDiceFace.Create(new DiceFace((DiceFaceColor)new System.Random().Next(Enum.GetNames(typeof(DiceFaceColor)).Length),1), newDiceFacePrefab, newDiceFacePrefab.transform.position);
+        NewDiceFace.Create(GameController.getNextDiceFaceCustomization(), newDiceFacePrefab, newDiceFacePrefab.transform.position);
     }
 
     public void RemoveDiceFace(GameObject go){
@@ -144,7 +138,7 @@ public class CustomizationController : MonoBehaviour
     }
 
     void showConfirmationBox(Action action){
-        foreach(Button btn in GameObject.Find("Canvas").GetComponentsInChildren<Button>()){
+        foreach(Button btn in GameObject.Find("CanvasCustomization").GetComponentsInChildren<Button>()){
             btn.interactable = false;
             if(btn.GetComponentInChildren<Text>() != null){
                 Color c = btn.GetComponentInChildren<Text>().color;
@@ -152,7 +146,7 @@ public class CustomizationController : MonoBehaviour
                 btn.GetComponentInChildren<Text>().color = c;
             }
         }
-        foreach(BoxCollider2D col in GameObject.Find("Canvas").GetComponentsInChildren<BoxCollider2D>()){
+        foreach(BoxCollider2D col in GameObject.Find("CanvasCustomization").GetComponentsInChildren<BoxCollider2D>()){
             col.enabled = false;
         }
         GameObject box = GameObject.Find("ConfirmationBox");
@@ -187,7 +181,7 @@ public class CustomizationController : MonoBehaviour
     }
 
     void ConfirmCustomization(Action action){
-        foreach(Button btn in GameObject.Find("Canvas").GetComponentsInChildren<Button>()){
+        foreach(Button btn in GameObject.Find("CanvasCustomization").GetComponentsInChildren<Button>()){
             btn.interactable = true;
             if(btn.GetComponentInChildren<Text>() != null){
                 Color c = btn.GetComponentInChildren<Text>().color;
@@ -195,7 +189,7 @@ public class CustomizationController : MonoBehaviour
                 btn.GetComponentInChildren<Text>().color = c;
             }
         }
-        foreach(BoxCollider2D col in GameObject.Find("Canvas").GetComponentsInChildren<BoxCollider2D>()){
+        foreach(BoxCollider2D col in GameObject.Find("CanvasCustomization").GetComponentsInChildren<BoxCollider2D>()){
             col.enabled = true;
         }
         GameObject box = GameObject.Find("ConfirmationBox");

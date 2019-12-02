@@ -20,10 +20,20 @@ public class ShopControlScript : MonoBehaviour
     public Button buyDiceButton;
     public Button buyDiceSideButton;
     public Button buyBonusItemButton;
+
+    private string nextScene;
+    private DiceFace diceSide;
+    private int diceFacesAmount;
+
     // Start is called before the first frame update
     void Start()
     {
-        moneyAmount = PlayerPrefs.GetInt("moneyAmount");
+        moneyAmount = GameController.getPlayer().getGold();
+        nextScene = "MapScene";
+        diceSide = new DiceFace();
+        GameObject.Find("DiceSide").GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+diceSide.getFaceColor().ToString().ToLower());
+        diceFacesAmount = Random.Range(4,9);
+        GameObject.Find("DiceFacesAmount").GetComponent<Text>().text = ""+diceFacesAmount;
     }
 
     // Update is called once per frame
@@ -52,22 +62,28 @@ public class ShopControlScript : MonoBehaviour
 
     public void buyDice() 
     {
+        GameObject.Find("ShopkeeperSprite").GetComponent<Animator>().SetTrigger("selling");
         moneyAmount -= 10;
         PlayerPrefs.SetInt("isDiceSold", 1);
         dicePrice.text = "Sold !";
         buyDiceButton.gameObject.SetActive(false);
+        GameController.getPlayer().addDice(new Dice(diceFacesAmount));
     }
 
     public void buyDiceSide()
     {
+        GameObject.Find("ShopkeeperSprite").GetComponent<Animator>().SetTrigger("selling");
         moneyAmount -= 5;
         PlayerPrefs.SetInt("isDiceSideSold", 1);
         diceSidePrice.text = "Sold !";
         buyDiceSideButton.gameObject.SetActive(false);
+        nextScene = "CustomizationScene";
+        GameController.setNextDiceFaceCustomization(diceSide);
     }
 
     public void buyBonusItem()
     {
+        GameObject.Find("ShopkeeperSprite").GetComponent<Animator>().SetTrigger("selling");
         moneyAmount -= 2;
         PlayerPrefs.SetInt("isBonusItemSold", 1);
         bonusItemPrice.text = "Sold !";
@@ -76,7 +92,9 @@ public class ShopControlScript : MonoBehaviour
 
     public void exitShop()
     {
-        PlayerPrefs.SetInt("MoneyAmount", moneyAmount);
-        SceneManager.LoadScene("MapScene");
+        GameController.getPlayer().setGold(moneyAmount);
+        StartCoroutine(CombatController.PlayAndWait(GameObject.Find("ShopkeeperSprite").GetComponent<Animator>(),"greeting",() => {
+            SceneManager.LoadScene(nextScene);
+        }));
     }
 }
