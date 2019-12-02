@@ -88,9 +88,11 @@ public class Enemy : Character
     /// Apply the chosen ability effect on the chosen target
     /// </summary>
     public void useAbility(){
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("attack");
         chosenAbility.applyEffects(this, chosenTarget);
         refreshHUD();
         chosenTarget.refreshHUD();
+        chosenTarget.gameObject.GetComponentInChildren<Animator>().gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger(chosenAbility.getFaceColor().ToString().ToLower());
     }
 
     public void setType(EnemyType t){
@@ -134,7 +136,7 @@ public class Enemy : Character
                 addAbility(new DiceFace(DiceFaceColor.PHYSICAL,2));
                 break;
         }
-        gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/"+controllerName);
+        gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/characters/"+controllerName+"/"+controllerName);
     }
 
     void OnTriggerEnter2D(Collider2D other){

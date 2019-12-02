@@ -129,7 +129,6 @@ public class CombatController : MonoBehaviour
                 }
             }else{
                 if(play){
-                    PlayAndDoCallback(activeCharacter.GetComponentInChildren<Animator>(),"attack", null);
                     activeCharacter.GetComponent<Enemy>().useAbility();
                     PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_hurt", () => {
                         EndTurn();
@@ -298,8 +297,9 @@ public class CombatController : MonoBehaviour
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
         boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
+        player.GetComponentInChildren<Animator>().SetTrigger("player_attack");
+        target.GetComponentInChildren<Animator>().gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger(boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().getFaceColor().ToString().ToLower());
         discardDiceAndFace(boardSlotID);
-        PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_attack",null);
         PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"hurt",() => {
             if(target.GetComponent<Enemy>().getCurrentHP() <= 0){
                 killEnemy(target, () => {
@@ -383,7 +383,7 @@ public class CombatController : MonoBehaviour
         StartCoroutine(PlayAndWait(animator, animName, callback));
     }
 
-    System.Collections.IEnumerator PlayAndWait(Animator animator, string animName, Action callback){
+    public static System.Collections.IEnumerator PlayAndWait(Animator animator, string animName, Action callback){
         animator.SetTrigger(animName);
         while(!animator.GetCurrentAnimatorStateInfo(0).IsName(animName)){
             yield return null;

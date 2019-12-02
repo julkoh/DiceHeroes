@@ -52,6 +52,7 @@ public class Damage : Effect
             target.setCurrentHP(HPLeft);
         }
         target.refreshHUD();
+        target.gameObject.GetComponentInChildren<Animator>().SetTrigger("hurt");
     }
 }
 
@@ -109,7 +110,7 @@ public class Confuse : Effect
 
     public override void apply(Character source, Character target){
         if(target is Enemy){
-            Instantiate(Resources.Load<GameObject>("Prefabs/RadiationParticle.prefab"),target.transform);
+            Instantiate(Resources.Load<GameObject>("Prefabs/RadiationParticle"),target.transform);
             Enemy e = (Enemy)target;
             e.chooseAbility();
             target.refreshHUD();
