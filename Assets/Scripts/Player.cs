@@ -23,8 +23,6 @@ public class Player : Character
         for (int i = 0; i < diceAmount; i++){
             addDice(new Dice(4));
         }
-        addItem(new Item());
-        addItem(new Item());
     }
 
     void Awake(){
