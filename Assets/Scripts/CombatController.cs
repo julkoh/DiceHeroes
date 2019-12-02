@@ -1,7 +1,7 @@
 ﻿using System; 
 using System.Collections.Generic;
 using System.Threading;
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -36,8 +36,9 @@ public class CombatController : MonoBehaviour
         usedDices = new List<Dice>();
         enemies  = new List<GameObject>();
         for(int i = 0; i < GameController.getEnemyAmount(); i++){
-            GameObject enemyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemy.prefab");
-            enemies.Add(Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this));
+            GameObject enemyPrefab = Resources.Load<GameObject>("Prefabs/Enemy");
+            GameObject enemy = Enemy.Create(enemyPrefab, new Vector3(-200 * enemies.Count, enemyPrefab.transform.position.y, 0), this);
+            enemies.Add(enemy);
         }
         activeCharacterID = -1;
         activeCharacter = player.gameObject;

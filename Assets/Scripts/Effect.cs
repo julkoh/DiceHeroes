@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public abstract class Effect
+
+public abstract class Effect : MonoBehaviour
 {
     private int value;
     private string description;
@@ -106,6 +109,7 @@ public class Confuse : Effect
 
     public override void apply(Character source, Character target){
         if(target is Enemy){
+            Instantiate(Resources.Load<GameObject>("Prefabs/RadiationParticle.prefab"),target.transform);
             Enemy e = (Enemy)target;
             e.chooseAbility();
             target.refreshHUD();

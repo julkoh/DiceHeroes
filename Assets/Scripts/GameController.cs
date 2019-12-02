@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 
 public static class GameController
 {
     private static Player player = new Player(20,0,6,4);
     private static List<EnemyType> enemyTypes = new List<EnemyType>(){
-        EnemyType.BRUTE
+        EnemyType.BRUTE,
+        EnemyType.BANDIT,
+        EnemyType.BRIGAND,
+        EnemyType.DEALER,
+        EnemyType.JUNKIE,
+        EnemyType.RACKETEER
+
     };
     private static int enemyAmount = 1;
     public static List<Tile> tiles=new List<Tile>();

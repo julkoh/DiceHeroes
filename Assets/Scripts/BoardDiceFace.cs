@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEditor;
+
 
 public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
 {
@@ -22,7 +22,7 @@ public class BoardDiceFace : MonoBehaviour , IDragHandler, IEndDragHandler
         dfgo.setBasePosition(go.transform.position);
         dfgo.setSlot(slot);
         //Sets the text of the GameObject
-        go.GetComponentInChildren<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+df.getFaceColor().ToString().ToLower()+".png");
+        go.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+df.getFaceColor().ToString().ToLower());
         return go;
     }
 

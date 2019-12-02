@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,7 +81,7 @@ public class Enemy : Character
         }
         setChosenAbility(abilities[i]);
         gameObject.transform.Find("Intent").Find("Value").gameObject.GetComponent<Text>().text = ""+chosenAbility.getEffect()[0].getValue();
-        gameObject.transform.Find("Intent").Find("Icon").gameObject.GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Images/Effects/effect_"+chosenAbility.getFaceColor().ToString().ToLower()+".png");
+        gameObject.transform.Find("Intent").Find("Icon").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+chosenAbility.getFaceColor().ToString().ToLower());
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class Enemy : Character
                 addAbility(new DiceFace(DiceFaceColor.PHYSICAL,2));
                 break;
         }
-        gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/"+controllerName+".controller");
+        gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/"+controllerName);
     }
 
     void OnTriggerEnter2D(Collider2D other){
