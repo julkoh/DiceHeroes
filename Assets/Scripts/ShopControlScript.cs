@@ -67,13 +67,13 @@ public class ShopControlScript : MonoBehaviour
             buyDiceButton.interactable = false;
 
         isDiceSideSold = PlayerPrefs.GetInt("IsDiceSideSold");
-        if (moneyAmount >= 5 && isDiceSideSold == 0)
+        if (moneyAmount >= diceSideCost && isDiceSideSold == 0)
             buyDiceSideButton.interactable = true;
         else
             buyDiceSideButton.interactable = false;
 
         isBonusItemSold = PlayerPrefs.GetInt("IsBonusItemSold");
-        if (moneyAmount >= 2 && isBonusItemSold == 0)
+        if (moneyAmount >= item.getItemCost() && isBonusItemSold == 0)
             buyBonusItemButton.interactable = true;
         else
             buyBonusItemButton.interactable = false;
