@@ -66,11 +66,20 @@ public class CombatController : MonoBehaviour
             emptyBoard();
             recoverDices();
             GameController.setPlayer(player.GetComponent<Player>());
+            string nextScene = "CustomizationScene";
+            if(GameController.getEnemyTypes().Contains(EnemyType.BOSS1) || GameController.getEnemyTypes().Contains(EnemyType.BOSS2)){
+                nextScene = "MenuScene";
+            }
             GameController.clearEnemytypes();
             GameController.setEnemyAmount(0);
             GameController.setNextDiceFaceCustomization(new DiceFace());
             SceneManager.UnloadSceneAsync("CombatScene");
-            SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
+            if(nextScene == "CustomizationScene"){
+                SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
+            }else{
+                SceneManager.UnloadSceneAsync("MapScene");
+                SceneManager.LoadScene("MenuScene");
+            }
         }
         //replayButton.SetActive(true);
     }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public void Play(){
+        GameController.Reset();
         SceneManager.LoadScene("MapScene");
     }
 

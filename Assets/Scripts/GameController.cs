@@ -65,4 +65,12 @@ public static class GameController
     public static void setNextDiceFaceCustomization(DiceFace df){
         nextDiceFaceCustomization = df;
     }
+
+    public static void Reset(){
+        tiles.Clear();
+        linesHistory.Clear();
+        mapScene = true;
+        karma = 0;
+        enemyTypes.Clear();
+    }
 }
