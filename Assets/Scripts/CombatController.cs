@@ -59,7 +59,7 @@ public class CombatController : MonoBehaviour
         show endCombat screen here
         */
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
-            PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_die", null);
+            PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"die", null);
             GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
         }else if(enemies.Count == 0){
             //GameObject.Find("VictoryText").GetComponent<Text>().text = "Player won !";
@@ -132,7 +132,7 @@ public class CombatController : MonoBehaviour
             }else{
                 if(play){
                     activeCharacter.GetComponent<Enemy>().useAbility();
-                    PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"player_hurt", () => {
+                    PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"hurt", () => {
                         EndTurn();
                     });
                 }else{
@@ -299,7 +299,7 @@ public class CombatController : MonoBehaviour
     /// </summary>
     public void useDice(int boardSlotID, GameObject target){
         boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().applyEffects(player.GetComponent<Player>() ,target.GetComponent<Enemy>());
-        player.GetComponentInChildren<Animator>().SetTrigger("player_attack");
+        player.GetComponentInChildren<Animator>().SetTrigger("attack");
         target.GetComponentInChildren<Animator>().gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger(boardDiceFaces[boardSlotID].GetComponent<BoardDiceFace>().getDiceFace().getFaceColor().ToString().ToLower());
         discardDiceAndFace(boardSlotID);
         PlayAndDoCallback(target.GetComponentInChildren<Animator>(),"hurt",() => {

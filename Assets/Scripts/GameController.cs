@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class GameController
 {
-    private static Player player = new Player(20,60,6,4);
+    private static Player player = new Player(20,5,6,4);
     private static List<EnemyType> enemyTypes = new List<EnemyType>(){
         EnemyType.BRUTE,
         EnemyType.BANDIT,

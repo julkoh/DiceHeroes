@@ -32,7 +32,11 @@ public class ShopControlScript : MonoBehaviour
     {
         moneyAmount = GameController.getPlayer().getGold();
         nextScene = "MapScene";
-        diceSide = new DiceFace((DiceFaceColor)Random.Range(0,System.Enum.GetNames(typeof(DiceFaceColor)).Length),1);
+        DiceFaceColor dfc = DiceFaceColor.NEUTRAL;
+        while(dfc == DiceFaceColor.NEUTRAL){
+            dfc = (DiceFaceColor)Random.Range(0,System.Enum.GetNames(typeof(DiceFaceColor)).Length);
+        }
+        diceSide = new DiceFace(dfc,1);
         GameObject.Find("DiceSide").GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Effects/effect_"+diceSide.getFaceColor().ToString().ToLower());
         diceSideCost = (int)diceSide.getFaceColor() > 2 ? ((int)diceSide.getFaceColor() > 3 ? 5 : 1) : 2;
         GameObject.Find("DiceSidePrice").GetComponent<Text>().text = diceSideCost+" gold";
@@ -102,8 +106,12 @@ public class ShopControlScript : MonoBehaviour
     {
         GameController.getPlayer().setGold(moneyAmount);
         StartCoroutine(CombatController.PlayAndWait(GameObject.Find("ShopkeeperSprite").GetComponent<Animator>(),"greeting",() => {
-            GameController.mapScene = true;
             SceneManager.UnloadSceneAsync("ShopScene");
+            if(nextScene == "CustomizationScene"){
+                SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
+            }else{
+                GameController.mapScene = true;
+            }
         }));
     }
 }

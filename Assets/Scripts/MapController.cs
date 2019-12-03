@@ -38,7 +38,6 @@ public class MapController : MonoBehaviour
         {
             if (inipos==lr.GetPosition(0) && GameController.currentTile.tile.transform.position==lr.GetPosition(1)){
                 GameController.linesHistory.Add(lr);
-            Debug.Log("Added");
             }
         }
         canvasMap.SetActive(false);
