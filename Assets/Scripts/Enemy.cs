@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum EnemyType {
-    BRUTE, RACKETEER, JUNKIE, DEALER, BRIGAND, BANDIT
+    BRUTE, RACKETEER, JUNKIE, DEALER, BRIGAND, BANDIT, BOSS1, BOSS2
 }
 
 public class Enemy : Character
@@ -134,6 +134,19 @@ public class Enemy : Character
                 addAbility(new DiceFace(DiceFaceColor.FIRE,1));
                 addAbility(new DiceFace(DiceFaceColor.EARTH,1));
                 addAbility(new DiceFace(DiceFaceColor.PHYSICAL,2));
+                break;
+            case EnemyType.BOSS1 :
+                controllerName = "zamza";
+                    addAbility(new DiceFace(DiceFaceColor.FIRE,2));
+                    addAbility(new DiceFace(DiceFaceColor.LAVA,1));
+                    addAbility(new DiceFace(DiceFaceColor.PHYSICAL,2));
+                break;
+            case EnemyType.BOSS2 :
+                controllerName = "zamza";
+                    addAbility(new DiceFace(DiceFaceColor.ICE,1));
+                    addAbility(new DiceFace(DiceFaceColor.WATER,2));
+                    addAbility(new DiceFace(DiceFaceColor.POISON,2));
+                    addAbility(new DiceFace(DiceFaceColor.RADIATION,2));
                 break;
         }
         gameObject.GetComponentInChildren<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/characters/"+controllerName+"/"+controllerName);

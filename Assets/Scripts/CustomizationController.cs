@@ -115,7 +115,15 @@ public class CustomizationController : MonoBehaviour
         }
         saveChangestoPlayer();
         GameController.setPlayer(player);
-        GameController.mapScene=true;
+        if (GameController.nextScene == "ShopScene")
+        {
+            GameController.shopScene=true;
+        }
+        else
+        {
+          GameController.mapScene=true;
+        }
+        
         SceneManager.UnloadSceneAsync("CustomizationScene");   
     }
 

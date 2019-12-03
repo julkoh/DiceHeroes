@@ -27,10 +27,13 @@ public class ShopControlScript : MonoBehaviour
     private int diceFacesAmount;
     private Item item;
 
+    GameObject canvasShop;
+
     // Start is called before the first frame update
     void Start()
     {
         moneyAmount = GameController.getPlayer().getGold();
+        canvasShop = GameObject.Find("CanvasShop");
         nextScene = "MapScene";
         DiceFaceColor dfc = DiceFaceColor.NEUTRAL;
         while(dfc == DiceFaceColor.NEUTRAL){
@@ -50,6 +53,11 @@ public class ShopControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameController.shopScene)
+        {
+            GameController.shopScene=false;    
+            canvasShop.SetActive(true);
+        }
         moneyAmountText.text = moneyAmount.ToString() + " gold";
 
         isDiceSold = PlayerPrefs.GetInt("IsDiceSold");
@@ -88,7 +96,9 @@ public class ShopControlScript : MonoBehaviour
         PlayerPrefs.SetInt("isDiceSideSold", 1);
         diceSidePrice.text = "Sold !";
         buyDiceSideButton.gameObject.SetActive(false);
-        nextScene = "CustomizationScene";
+        SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
+        canvasShop.SetActive(false);
+        GameController.nextScene = "ShopScene";
         GameController.setNextDiceFaceCustomization(diceSide);
     }
 
@@ -107,11 +117,7 @@ public class ShopControlScript : MonoBehaviour
         GameController.getPlayer().setGold(moneyAmount);
         StartCoroutine(CombatController.PlayAndWait(GameObject.Find("ShopkeeperSprite").GetComponent<Animator>(),"greeting",() => {
             SceneManager.UnloadSceneAsync("ShopScene");
-            if(nextScene == "CustomizationScene"){
-                SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
-            }else{
-                GameController.mapScene = true;
-            }
+            GameController.mapScene = true;
         }));
     }
 }

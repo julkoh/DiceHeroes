@@ -19,8 +19,10 @@ public static class GameController
     public static Vector3 position;
     public static Tile currentTile;
     public static bool mapScene=true;
+    public static bool shopScene=true;
     public static int karma = 0;
     public static int maxshop = 1;
+    public static string nextScene;
     public static  List<LineRenderer> linesHistory = new List<LineRenderer>();
     public static DiceFace nextDiceFaceCustomization = new DiceFace();
 

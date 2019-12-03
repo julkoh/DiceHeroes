@@ -94,14 +94,18 @@ public class Tile : MonoBehaviour
                 if (GameController.karma > 0)
                 {
                 //add boss Type 1
+                GameController.addEnemyType(EnemyType.BOSS1);
                 }
                 if (GameController.karma < 0)
                 {
                 //add boss Type 2
+                GameController.addEnemyType(EnemyType.BOSS2);
                 }
                 else
                 {
                 //add Random boss Type 1,2
+                GameController.addEnemyType(EnemyType.BOSS1);
+                GameController.addEnemyType(EnemyType.BOSS2);
                 }
                 break;
             }
