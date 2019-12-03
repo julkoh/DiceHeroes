@@ -60,7 +60,10 @@ public class CombatController : MonoBehaviour
         */
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
             PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"die", null);
-            GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
+            //GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
+            SceneManager.UnloadSceneAsync("CombatScene");
+            SceneManager.UnloadSceneAsync("MapScene");
+            SceneManager.LoadScene("MenuScene");
         }else if(enemies.Count == 0){
             //GameObject.Find("VictoryText").GetComponent<Text>().text = "Player won !";
             emptyBoard();
