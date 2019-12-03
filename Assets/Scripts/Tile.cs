@@ -73,7 +73,14 @@ public class Tile : MonoBehaviour
         button.onClick.AddListener(()=>{
             mapcontroller.GetComponent<MapController>().OnClick(x,y);
             //Action from type of tile
-            GameController.setEnemyAmount(UnityEngine.Random.Range(1,3));
+            if (tiletype==Tiletype.BOSS)
+            {
+                GameController.setEnemyAmount(1);
+            }
+            else
+            {
+                GameController.setEnemyAmount(UnityEngine.Random.Range(1,3));
+            }
             switch(tiletype)
             {
                 case Tiletype.GANG1:
@@ -109,9 +116,6 @@ public class Tile : MonoBehaviour
                 }
                 break;
             }
-            
-            
-            
         });
         //Debug.Log(x);
     }

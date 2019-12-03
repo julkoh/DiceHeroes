@@ -118,6 +118,7 @@ public class CustomizationController : MonoBehaviour
         if (GameController.nextScene == "ShopScene")
         {
             GameController.shopScene=true;
+            GameController.nextScene="MapScene";
         }
         else
         {
