@@ -11,6 +11,7 @@ public class MapController : MonoBehaviour
 
     
     public void OnClick(int x,int y){
+        hideOverlayTransition();
         GameController.position= new Vector3(x,y);
         Vector3 inipos = GameController.currentTile.tile.transform.position;
         Tile initile = GameController.currentTile;
@@ -177,4 +178,23 @@ public class MapController : MonoBehaviour
         }
     }
 
+    public void toggleOverlay(){
+        Color c = GameObject.Find("MapOverlay").GetComponent<Image>().color;
+        if(c.a == 0){
+            c.a = 1;
+            GameObject.Find("MapOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("MapOverlay").transform.SetAsLastSibling();
+        }else{
+            c.a = 0;
+            GameObject.Find("MapOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("MapOverlay").transform.SetAsFirstSibling();
+        }
+    }
+
+    void hideOverlayTransition(){
+        Color c = GameObject.Find("MapOverlay").GetComponent<Image>().color;
+        if(c.a == 1){
+            toggleOverlay();
+        }
+    }
 }

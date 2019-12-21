@@ -124,7 +124,7 @@ public class CustomizationController : MonoBehaviour
         {
           GameController.mapScene=true;
         }
-        
+        hideOverlayTransition();
         SceneManager.UnloadSceneAsync("CustomizationScene");   
     }
 
@@ -217,5 +217,25 @@ public class CustomizationController : MonoBehaviour
             btn.interactable = false;
         }
         action();
+    }
+
+    public void toggleOverlay(){
+        Color c = GameObject.Find("CustomizationOverlay").GetComponent<Image>().color;
+        if(c.a == 0){
+            c.a = 1;
+            GameObject.Find("CustomizationOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("CustomizationOverlay").transform.SetAsLastSibling();
+        }else{
+            c.a = 0;
+            GameObject.Find("CustomizationOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("CustomizationOverlay").transform.SetAsFirstSibling();
+        }
+    }
+
+    void hideOverlayTransition(){
+        Color c = GameObject.Find("CustomizationOverlay").GetComponent<Image>().color;
+        if(c.a == 1){
+            toggleOverlay();
+        }
     }
 }

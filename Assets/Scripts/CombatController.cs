@@ -58,6 +58,7 @@ public class CombatController : MonoBehaviour
         /*
         show endCombat screen here
         */
+        hideOverlayTransition();
         if(player.GetComponent<Player>().getCurrentHP() <= 0){
             PlayAndDoCallback(player.GetComponentInChildren<Animator>(),"die", null);
             //GameObject.Find("VictoryText").GetComponent<Text>().text = "Enemies won !";
@@ -408,6 +409,26 @@ public class CombatController : MonoBehaviour
         }
         if(callback != null){
             callback();
+        }
+    }
+
+    public void toggleOverlay(){
+        Color c = GameObject.Find("CombatOverlay").GetComponent<Image>().color;
+        if(c.a == 0){
+            c.a = 1;
+            GameObject.Find("CombatOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("CombatOverlay").transform.SetAsLastSibling();
+        }else{
+            c.a = 0;
+            GameObject.Find("CombatOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("CombatOverlay").transform.SetAsFirstSibling();
+        }
+    }
+
+    void hideOverlayTransition(){
+        Color c = GameObject.Find("CombatOverlay").GetComponent<Image>().color;
+        if(c.a == 1){
+            toggleOverlay();
         }
     }
 }

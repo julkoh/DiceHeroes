@@ -96,6 +96,7 @@ public class ShopControlScript : MonoBehaviour
         PlayerPrefs.SetInt("isDiceSideSold", 1);
         diceSidePrice.text = "Sold !";
         buyDiceSideButton.gameObject.SetActive(false);
+        hideOverlayTransition();
         SceneManager.LoadScene("CustomizationScene",LoadSceneMode.Additive);
         canvasShop.SetActive(false);
         GameController.nextScene = "ShopScene";
@@ -116,8 +117,29 @@ public class ShopControlScript : MonoBehaviour
     {
         GameController.getPlayer().setGold(moneyAmount);
         StartCoroutine(CombatController.PlayAndWait(GameObject.Find("ShopkeeperSprite").GetComponent<Animator>(),"greeting",() => {
+            hideOverlayTransition();
             SceneManager.UnloadSceneAsync("ShopScene");
             GameController.mapScene = true;
         }));
+    }
+
+    public void toggleOverlay(){
+        Color c = GameObject.Find("ShopOverlay").GetComponent<Image>().color;
+        if(c.a == 0){
+            c.a = 1;
+            GameObject.Find("ShopOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("ShopOverlay").transform.SetAsLastSibling();
+        }else{
+            c.a = 0;
+            GameObject.Find("ShopOverlay").GetComponent<Image>().color = c;
+            GameObject.Find("ShopOverlay").transform.SetAsFirstSibling();
+        }
+    }
+
+    void hideOverlayTransition(){
+        Color c = GameObject.Find("ShopOverlay").GetComponent<Image>().color;
+        if(c.a == 1){
+            toggleOverlay();
+        }
     }
 }
