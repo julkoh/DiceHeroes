@@ -20,6 +20,7 @@ public class CombatController : MonoBehaviour
     public GameObject replayButton;
     private List<GameObject> diceFacesToFusion;
     private bool fusion = true;
+    private List<DiceFaceColor> combinableColors;
 
     // ========================= Combat Management =========================
 
@@ -44,6 +45,7 @@ public class CombatController : MonoBehaviour
         activeCharacterID = -1;
         activeCharacter = player.gameObject;
         diceFacesToFusion = new List<GameObject>();
+        combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
         StartTurn();
     }
 
@@ -338,7 +340,6 @@ public class CombatController : MonoBehaviour
         if(fusion){
             DiceFaceColor dfc1 = df1.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
             DiceFaceColor dfc2 = df2.GetComponent<BoardDiceFace>().getDiceFace().getFaceColor();
-            List<DiceFaceColor> combinableColors = new List<DiceFaceColor>{ DiceFaceColor.WATER, DiceFaceColor.EARTH, DiceFaceColor.FIRE };
             return combinableColors.Contains(dfc1) && combinableColors.Contains(dfc2);
         }else{
             return fusion;
